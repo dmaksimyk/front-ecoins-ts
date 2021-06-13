@@ -3,7 +3,6 @@ import * as store from "engine/state";
 import { useSetRecoilState } from "recoil";
 import { Story } from "engine/types";
 
-
 const useNextPage = () => {
   const [story, setStory] = useCall(store.APP_STORY);
   const setViewPanel = useSetRecoilState(store.ACTIVE_VIEW_PANEL);
