@@ -1,0 +1,14 @@
+@import "./Menu", "./Profile", "./Gift", "./Casino", "./Roll", "./Random", "./Logs";
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.Header__content {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

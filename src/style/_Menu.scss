@@ -1,0 +1,25 @@
+.Card__menu {
+  transition: .24s;
+  overflow: hidden;
+  background: inherit;
+
+  &:active {
+    transition: .135s;
+    background: rgba(143, 143, 143, 0.1);
+  }
+
+  & .Menu {
+    overflow: hidden;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text_name);
+  
+    & .menu-text {
+      margin: 0;
+    }
+  }
+}

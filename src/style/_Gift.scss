@@ -1,0 +1,28 @@
+.gift-per-watch-video {
+  transition: .3s;
+  padding: 8px;
+  &:active {
+    transition: .02s;
+    background: rgba(87, 87, 87, 0.2);
+    border-radius: 100vh;
+  }
+  animation: giftAnim 10s ease-in-out 2s infinite;
+}
+
+@keyframes giftAnim {
+  from {
+    transform: rotateZ(0);
+  }
+  10% {
+    transform: rotateZ(30deg);
+  }  
+  20% {
+    transform: rotateZ(-30deg);
+  }
+  30% {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(0);
+  }
+}
