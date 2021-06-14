@@ -6,6 +6,7 @@ import '@gmelum/vkui/dist/vkui.css'
 import './style/style.scss';
 
 import {
+  ACTIVE_MODAL,
   ACTIVE_VIEW_PANEL,
   POPOUT
 } from 'engine/state';
@@ -15,10 +16,16 @@ import {
   Epic,
   Tabbar,
   TabbarItem,
-  Panel
+  Panel,
+  ModalPageHeader,
+  PanelHeaderClose,
+  PanelHeaderButton,
+  ModalRoot,
+  ModalPage,
 } from '@gmelum/vkui'
 
 import {
+  Icon24Dismiss,
   Icon28UserCircleOutline,
   Icon28GameOutline,
   Icon28MoneyWadOutline,
@@ -30,11 +37,36 @@ import {
   Casino
 } from 'panels'
 
+import {
+  SeeUserMore
+} from 'components'
+
 const App = () => {
   useClient();
   const popout = useRecoilValue(POPOUT);
   const activeViewPanel = useRecoilValue(ACTIVE_VIEW_PANEL);
+  const activeModal = useRecoilValue(ACTIVE_MODAL)
   const action = useAction();
+  const platform = document.body.getAttribute('platform') 
+
+  const modals = (
+    <ModalRoot activeModal={activeModal}>
+      <ModalPage
+        settlingHeight={200}
+        id="seeUserMore"
+        onClose={() => action.setModal(null)}
+        header={
+          <ModalPageHeader
+            right={(platform === 'ios' || platform === "web") && <PanelHeaderButton onClick={() => action.setModal(null)}><Icon24Dismiss /></PanelHeaderButton>}
+            left={(platform === 'android' || platform === "mobile-web") && <PanelHeaderClose onClick={() => action.setModal(null)} />}
+          >
+            Подробная информация
+          </ModalPageHeader>
+        }>
+        <SeeUserMore />
+      </ModalPage>
+    </ModalRoot>
+  )
 
   return (
     <Epic activeStory={activeViewPanel.activeView} tabbar={
@@ -65,7 +97,7 @@ const App = () => {
         ><Icon28ShoppingCartOutline /></TabbarItem>
       </Tabbar>
     }>
-      <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout}>
+      <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout} modal={modals}>
         <Home id="Home" />
         <Panel id="Rating">Rating</Panel>
       </View>
@@ -73,8 +105,7 @@ const App = () => {
         <Panel id="Job">Job</Panel>
       </View>
       <View id="Entertainment" activePanel={activeViewPanel.activePanel} popout={popout}>
-        <Panel id="Entertainment">Casino</Panel>
-        {/* <Casino id="Entertainment" /> */}
+        <Casino id="Entertainment" />
       </View>
       <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout}>
         <Panel id="Shop">Shop</Panel>

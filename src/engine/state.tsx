@@ -1,7 +1,15 @@
 import { io } from "socket.io-client";
-import { AppStory, TPanelView } from 'engine/types';
 import { atom } from 'recoil';
 import { ReactNode } from "react";
+
+import { 
+  AppStory, 
+  TPanelView, 
+  TTransfer,
+  TBusiness,
+  TJob,
+  TModals
+} from 'engine/types';
 
 import 'moment/locale/ru'
 import moment from 'moment'
@@ -25,12 +33,10 @@ export const CLIENT = atom({
   })
 });
 
-//Глобальные переменные
+// Глобальные переменные
 export const TOKEN = atom({ key: "token", default: token });
-export const BLOCKED = atom<boolean>({ key: "blocked", default: false });
-export const DONUT = atom<boolean>({ key: "donut", default: false });
-export const ONLINE_USER = atom<string>({ key: "online_user", default: '0' });
 export const POPOUT = atom<ReactNode | undefined>({ key: "popout", default: undefined });
+export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
 export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Home", activePanel: "Home" }], });
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
   key: "active_view_panel",
@@ -39,3 +45,21 @@ export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
     activePanel: 'Home',
   }
 });
+
+// Пользователь - Информация
+export const ID = atom<number>({ key: 'id', default: 1 })
+export const IMG = atom<string>({ key: 'img', default: 'https://vk.com/images/camera_200.png' })
+export const FIRST_LAST_NAME = atom<string>({ key: 'first_last_name', default: 'No Name' })
+export const BALANCE = atom<string>({ key: 'balance', default: '1 тыс.' });
+export const EXP = atom<string>({ key: 'exp', default: '1 (0/200 exp)' });
+export const CHECKIN = atom<string>({ key: 'checkin', default: '01 янв. 1999' });
+export const TRANSFER = atom<TTransfer>({ key: 'transfer', default: { lock: false, level: 25 } })
+export const MY_BUSINESS = atom<TBusiness>({ key: 'my_business', default: { name: undefined, balance: 0 } })
+export const MY_JOB = atom<TJob>({ key: 'my_job', default: { name: undefined, balance: 0 } })
+export const MY_RATING = atom<number>({ key: "my_rating", default: 1000 });
+
+// Пользователь - Интерфейс
+export const BLOCKED = atom<boolean>({ key: "blocked", default: false });
+export const BONUS = atom<boolean>({ key: "bonus", default: false });
+export const DONUT = atom<boolean>({ key: "donut", default: false });
+export const ONLINE_USER = atom<string>({ key: "online_user", default: '0' });
