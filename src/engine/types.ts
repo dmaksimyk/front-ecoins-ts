@@ -3,6 +3,7 @@ export type AppStory = Story[];
 export type Story = {
   [key: string]: string;
 } & {
+  type?: "VIEW" | "PANEL" | undefined;
   activeView?: string;
   activePanel?: string;
   activePage?: string;
@@ -11,6 +12,7 @@ export type Story = {
 }
 
 export type TPanelView = {
+  type?: "VIEW" | "PANEL" | undefined;
   activePanel: string;
   activeView: string;
 }

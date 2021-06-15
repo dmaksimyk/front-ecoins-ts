@@ -1,6 +1,7 @@
 import { io } from "socket.io-client";
 import { atom } from 'recoil';
 import { ReactNode } from "react";
+import { CustomLoader } from 'components';
 
 import { 
   AppStory, 
@@ -35,7 +36,7 @@ export const CLIENT = atom({
 
 // Глобальные переменные
 export const TOKEN = atom({ key: "token", default: token });
-export const POPOUT = atom<ReactNode | undefined>({ key: "popout", default: undefined });
+export const POPOUT = atom<ReactNode | undefined>({ key: "popout", default: <CustomLoader /> });
 export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
 export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Home", activePanel: "Home" }], });
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
@@ -63,3 +64,7 @@ export const BLOCKED = atom<boolean>({ key: "blocked", default: false });
 export const BONUS = atom<boolean>({ key: "bonus", default: false });
 export const DONUT = atom<boolean>({ key: "donut", default: false });
 export const ONLINE_USER = atom<string>({ key: "online_user", default: '0' });
+
+// Магазин - items
+export const GET_BUSINESSES = atom<object[]>({ key: "get_businesses", default: [] });
+export const GET_JOBS = atom<object[]>({ key: "get_jobs", default: [] });

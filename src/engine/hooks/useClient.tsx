@@ -30,24 +30,21 @@ const useClient = () => {
   const setName = useSetRecoilState(state.FIRST_LAST_NAME);
   const setPopout = useSetRecoilState(state.POPOUT);
 
+  const setBusinesses = useSetRecoilState(state.GET_BUSINESSES)
+
   useEffect(() => {
-    setPopout(<CustomLoader />)
-    client.on("connect", () => {
-      bridge.send('VKWebAppGetUserInfo')
-        .then((data) => {
-          setPopout(undefined)
-          setName(`${data.first_name} ${data.last_name}`)
-          setId(data.id)
-          setImg(data.photo_200)
-        })
-        .catch(() => {
-          setName(`Err Err`)
-        })
+    client.on("connect", async () => {
+      setPopout(undefined)
+      let data = await bridge.send('VKWebAppGetUserInfo')
+      setName(`${data.first_name} ${data.last_name}`)
+      setId(data.id)
+      setImg(data.photo_200)
     });
     client.on("connect_error", (err) => setPopout(<CustomLoader />));
     client.on("disabled", (err) => setPopout(<CustomLoader />));
 
     client.on("START_APP", (data: START_APP) => {
+      setPopout(undefined)
       data.checkin && setCheckin(data.checkin)
       data.online && setOnlineUser(data.online)
       data.balance && setBalance(data.balance)
@@ -70,11 +67,11 @@ const useClient = () => {
     client.on("BUSINESS", (data: TBusiness) => data && setBusiness(data))
     client.on("JOB", (data: TJob) => data && setJob(data))
 
-    // Ping
+    client.on("GET_BUSINESSES", (data: any) => data && setBusinesses(data))
+
     window.setInterval(() => {
       client.emit("PING", {});
     }, 5000);
-
     // eslint-disable-next-line
   }, [])
   return client;

@@ -34,7 +34,9 @@ import {
 
 import {
   Home,
-  Casino
+  Shop,
+  Casino,
+  Businesses
 } from 'panels'
 
 import {
@@ -108,7 +110,8 @@ const App = () => {
         <Casino id="Entertainment" />
       </View>
       <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout}>
-        <Panel id="Shop">Shop</Panel>
+        <Shop id="Shop" />
+        <Businesses id="Businesses" />
       </View>
     </Epic>
   )

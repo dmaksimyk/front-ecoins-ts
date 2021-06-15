@@ -20,13 +20,12 @@ const useNextPage = () => {
     }
 
     let newStory = ({ ...endHistory, ...options } as Story)
-
     setStory([...history, ...[newStory]]);
-    
     (newStory.activeView && newStory) && setViewPanel({
       activeView: options.activeView || 'Home', 
       activePanel: options.activePanel || 'Home'
     })
+    
     window.history.pushState(newStory.activeView, JSON.stringify(newStory));
   }
 

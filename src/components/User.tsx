@@ -1,5 +1,8 @@
 import { useAction } from 'engine';
 import { useRecoilValue } from 'recoil';
+
+import { ReactNode } from 'react'
+
 import {
   BALANCE,
   ID,
@@ -24,7 +27,6 @@ import {
   Icon20Stars,
   Icon12StarCircle,
 } from '@vkontakte/icons'
-import { ReactNode } from 'react'
 
 type Props = {
   container: ReactNode
@@ -55,7 +57,7 @@ const User = ({ container }: Props) => {
       </div>
       {container}
       <Separator style={{margin: '12px 0'}}/>
-      <MiniInfoCell key='balance' before={<Icon20MoneyCircleOutline />} > Баланс: {balance} ₽ </MiniInfoCell>
+      <MiniInfoCell key='balance' before={<Icon20MoneyCircleOutline />} > Баланс: {balance} </MiniInfoCell>
       <MiniInfoCell key='exp' before={<Icon20Stars />} > Уровень: {exp} </MiniInfoCell>
       <MiniInfoCell key='moreInfo' before={<Icon20Info />} mode="more" onClick={() => action.setModal('seeUserMore')}> Подробная информация </MiniInfoCell>
       <Separator style={{margin: '8px 0'}}/>
