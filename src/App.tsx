@@ -42,7 +42,6 @@ import {
 } from 'components'
 
 const App = () => {
-  console.log('App')
   useClient();
   const popout = useRecoilValue(POPOUT);
   const activeViewPanel = useRecoilValue(ACTIVE_VIEW_PANEL);
