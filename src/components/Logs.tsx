@@ -1,4 +1,4 @@
-import { Header, Title, Card } from '@gmelum/vkui'
+import { Header, Title, Card } from '@vkontakte/vkui'
 import { ReactNode } from 'react'
 
 type Props = {

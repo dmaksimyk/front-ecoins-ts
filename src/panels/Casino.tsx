@@ -1,19 +1,21 @@
 import { Component } from 'react'
 
-import { Icon28CoinsOutline } from '@vkontakte/icons';
+// import { 
+//   Icon28CoinsOutline 
+// } from '@vkontakte/icons';
 
 import {
   Panel,
-  PanelHeader,
-  PanelHeaderContent,
-  PanelHeaderBack,
-  Div
-} from '@gmelum/vkui'
+  // PanelHeader,
+  // PanelHeaderContent,
+  // PanelHeaderBack,
+  // Div
+} from '@vkontakte/vkui'
 
-import {
-  Random,
-  Logs
-} from '../components'
+// import {
+//   Random,
+//   Logs
+// } from '../components'
 
 interface AppProps {
   id: string,

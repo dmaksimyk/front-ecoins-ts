@@ -19,7 +19,7 @@ import {
   Title,
   MiniInfoCell,
   Text
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 import {
   Icon20Info,

@@ -10,7 +10,7 @@ import {
 
 import {
   Card, Separator, MiniInfoCell, Div
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 const CardMyBalance = () => {
   const balance = useRecoilValue(BALANCE)
@@ -25,5 +25,5 @@ const CardMyBalance = () => {
     </div>
   )
 }
-
+// style={{ color: 'var(--accent)' }}
 export default CardMyBalance;

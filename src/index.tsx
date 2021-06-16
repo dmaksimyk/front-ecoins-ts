@@ -6,6 +6,7 @@ import App from 'App';
 import {
   RecoilRoot,
 } from 'recoil';
+import { AdaptivityProvider, AppRoot, ConfigProvider } from '@vkontakte/vkui';
 
 bridge.send("VKWebAppGetClientVersion")
   .then((data): any => {
@@ -39,7 +40,13 @@ bridge.subscribe((e: VKBridgeEvent<AnyReceiveMethodName>) => {
 
 ReactDOM.render(
   <RecoilRoot>
-    <App />
+    <ConfigProvider>
+      <AdaptivityProvider>
+        <AppRoot>
+          <App />
+        </AppRoot>
+      </AdaptivityProvider>
+    </ConfigProvider>
   </RecoilRoot>,
   document.getElementById('root')
 );

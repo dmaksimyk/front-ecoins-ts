@@ -6,7 +6,7 @@ import {
   Input,
   Button,
   Div,
-} from '@gmelum/vkui';
+} from '@vkontakte/vkui';
 
 type Props = {
   options: object[];

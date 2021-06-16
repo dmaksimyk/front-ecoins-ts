@@ -9,7 +9,8 @@ import {
   TTransfer,
   TBusiness,
   TJob,
-  TModals
+  TModals,
+  TSubnavigationBarSelect
 } from 'engine/types';
 
 import 'moment/locale/ru'
@@ -36,7 +37,8 @@ export const CLIENT = atom({
 
 // Глобальные переменные
 export const TOKEN = atom({ key: "token", default: token });
-export const POPOUT = atom<ReactNode | undefined>({ key: "popout", default: <CustomLoader /> });
+export const PLATFORM = atom<string | null>({key: "my_platform", default: null })
+export const POPOUT = atom<ReactNode | null>({ key: "popout", default: <CustomLoader /> });
 export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
 export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Home", activePanel: "Home" }], });
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
@@ -46,6 +48,8 @@ export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
     activePanel: 'Home',
   }
 });
+
+export const SYMBOLS_RUB = '₽';
 
 // Пользователь - Информация
 export const ID = atom<number>({ key: 'id', default: 1 })
@@ -68,3 +72,6 @@ export const ONLINE_USER = atom<string>({ key: "online_user", default: '0' });
 // Магазин - items
 export const GET_BUSINESSES = atom<object[]>({ key: "get_businesses", default: [] });
 export const GET_JOBS = atom<object[]>({ key: "get_jobs", default: [] });
+
+// Магазин - интерфейс
+export const SUBNAVIGATION_BAR_SELECT = atom<TSubnavigationBarSelect>({ key: 'subnavigation_bar_select', default: 'businesses' });

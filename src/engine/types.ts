@@ -17,6 +17,8 @@ export type TPanelView = {
   activeView: string;
 }
 
+export type TSubnavigationBarSelect = "businesses" | "promotions" | "home" | "cars" | "clothes" | "smartphones" | "market";
+
 export type TModals = "seeUserMore" | null;
 
 export type START_APP = {

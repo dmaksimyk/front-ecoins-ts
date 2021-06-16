@@ -1,29 +1,21 @@
 import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
-import { useAction } from 'engine';
+// import { useAction } from 'engine';
 
 import {
   Panel,
   PanelHeader,
   PanelHeaderContent,
-  SimpleCell
-} from '@gmelum/vkui'
-
-import {
-  Icon28WorkOutline,
-  Icon28SmartphoneOutline,
-  Icon28TicketOutline,
-  Icon28TshirtOutline,
-  Icon28CarOutline,
-  Icon28HomeOutline
-} from '@vkontakte/icons';
+  Separator
+} from '@vkontakte/vkui'
 
 import {
   CLIENT
 } from 'engine/state';
 
 import {
-  CardMyBalance
+  CardMyBalance,
+  Filter
 } from 'components'
 
 type TProps = {
@@ -32,7 +24,7 @@ type TProps = {
 
 const Shop = ({ id }: TProps) => {
   const client = useRecoilValue(CLIENT);
-  const action = useAction();
+  // const action = useAction();
 
   // eslint-disable-next-line
   useMemo(() => client.emit('GET_ITEMS'), [])
@@ -45,36 +37,8 @@ const Shop = ({ id }: TProps) => {
         </PanelHeaderContent>
       </PanelHeader>
       <CardMyBalance />
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Businesses" })}
-        expandable
-        before={<Icon28WorkOutline />}
-      >Бизнесы</SimpleCell>
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Promotions" })}
-        expandable
-        before={<Icon28TicketOutline />}
-      >Акции</SimpleCell>
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Home" })}
-        expandable
-        before={<Icon28HomeOutline />}
-      >Дома и квартиры</SimpleCell>
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Cars" })}
-        expandable
-        before={<Icon28CarOutline />}
-      >Машины</SimpleCell>
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Clothes" })}
-        expandable
-        before={<Icon28TshirtOutline />}
-      >Одежда</SimpleCell>
-      <SimpleCell
-        onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Smartphones" })}
-        expandable
-        before={<Icon28SmartphoneOutline />}
-      >Смартфоны</SimpleCell>
+      <Filter />
+      <Separator />
     </Panel >
   )
 }

@@ -4,14 +4,15 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderContent,
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 import {
   CardMyBalance,
-  ShopItems
+  ShopItems,
 } from 'components'
 
-import { 
+import {
+  SYMBOLS_RUB,
   GET_BUSINESSES,
 } from 'engine/state';
 
@@ -30,7 +31,7 @@ const Businesses = ({ id }: TProps) => {
         </PanelHeaderContent>
       </PanelHeader>
       <CardMyBalance />
-      {getBusinesses.map((item: any) => <ShopItems key={`id${item.id}`} img={item.img} title={item.title} status={`Доходность: ${item.earningsString} р/час`} />)}
+      {getBusinesses.map((item: any) => <ShopItems key={`id${item.id}`} img={item.img} title={item.title} status={`Доходность: ${item.earningsString} ${SYMBOLS_RUB}/час`} />)}
     </Panel >
   )
 }

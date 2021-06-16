@@ -5,7 +5,7 @@ import {
   PanelHeader,
   PanelHeaderContent,
   PanelHeaderBack
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 interface AppProps {
   id?: string,

@@ -1,6 +1,6 @@
 import {
   Card
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 import {
   Avatar,
@@ -27,9 +27,7 @@ const ShopItems = ({ img, title, status }: TProps) => {
             <Text weight="regular">Название: {title}</Text>
             <Text weight="regular" style={{ color: 'var(--text_subhead)' }}>{status}</Text>
           </div>
-          <div style={{ position: 'absolute', right: 12 }}>
-            <Button mode="outline" style={{ padding: 2 }}>Купить</Button>
-          </div>
+          <Button mode="outline" style={{ padding: 2, position: 'absolute', right: 0 }}>Купить</Button>
         </div>
       </Card>
     </Div>

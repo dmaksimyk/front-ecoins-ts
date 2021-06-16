@@ -14,7 +14,7 @@ import {
   MiniInfoCell,
   Separator,
   Header
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 import {
   Icon20UserOutline,

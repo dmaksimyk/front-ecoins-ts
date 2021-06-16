@@ -1,13 +1,14 @@
 // vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=localhost --port=10888
 import { useClient, useAction } from 'engine';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import '@gmelum/vkui/dist/vkui.css'
+import '@vkontakte/vkui/dist/vkui.css'
 import './style/style.scss';
 
 import {
   ACTIVE_MODAL,
   ACTIVE_VIEW_PANEL,
+  PLATFORM,
   POPOUT
 } from 'engine/state';
 
@@ -18,14 +19,11 @@ import {
   TabbarItem,
   Panel,
   ModalPageHeader,
-  PanelHeaderClose,
-  PanelHeaderButton,
   ModalRoot,
   ModalPage,
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 import {
-  Icon24Dismiss,
   Icon28UserCircleOutline,
   Icon28GameOutline,
   Icon28MoneyWadOutline,
@@ -44,12 +42,15 @@ import {
 } from 'components'
 
 const App = () => {
+  const platform = document.body.getAttribute('platform')
+  const setPlatform = useSetRecoilState(PLATFORM)
+  setTimeout(() => setPlatform(platform), 5000)
+
   useClient();
   const popout = useRecoilValue(POPOUT);
   const activeViewPanel = useRecoilValue(ACTIVE_VIEW_PANEL);
   const activeModal = useRecoilValue(ACTIVE_MODAL)
   const action = useAction();
-  const platform = document.body.getAttribute('platform') 
 
   const modals = (
     <ModalRoot activeModal={activeModal}>
@@ -58,10 +59,7 @@ const App = () => {
         id="seeUserMore"
         onClose={() => action.setModal(null)}
         header={
-          <ModalPageHeader
-            right={(platform === 'ios' || platform === "web") && <PanelHeaderButton onClick={() => action.setModal(null)}><Icon24Dismiss /></PanelHeaderButton>}
-            left={(platform === 'android' || platform === "mobile-web") && <PanelHeaderClose onClick={() => action.setModal(null)} />}
-          >
+          <ModalPageHeader>
             Подробная информация
           </ModalPageHeader>
         }>

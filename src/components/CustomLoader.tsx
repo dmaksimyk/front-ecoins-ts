@@ -4,7 +4,7 @@ import {
   Spinner,
   Title,
   Separator
-} from '@gmelum/vkui'
+} from '@vkontakte/vkui'
 
 const CustomLoader = () => {
   return (

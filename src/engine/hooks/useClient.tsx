@@ -34,20 +34,19 @@ const useClient = () => {
 
   useEffect(() => {
     client.on("connect", async () => {
-      setPopout(undefined)
       let data = await bridge.send('VKWebAppGetUserInfo')
       setName(`${data.first_name} ${data.last_name}`)
       setId(data.id)
       setImg(data.photo_200)
+      setPopout(null)
     });
     client.on("connect_error", (err) => setPopout(<CustomLoader />));
     client.on("disabled", (err) => setPopout(<CustomLoader />));
 
     client.on("START_APP", (data: START_APP) => {
-      setPopout(undefined)
       data.checkin && setCheckin(data.checkin)
       data.online && setOnlineUser(data.online)
-      data.balance && setBalance(data.balance)
+      data.balance && setBalance(`${data.balance} ₽`)
       data.exp && setExp(data.exp)
       data.bonus && setBonus(data.bonus)
       data.donut && setDonut(data.donut)
@@ -71,7 +70,7 @@ const useClient = () => {
 
     window.setInterval(() => {
       client.emit("PING", {});
-    }, 5000);
+    }, 15000);
     // eslint-disable-next-line
   }, [])
   return client;
