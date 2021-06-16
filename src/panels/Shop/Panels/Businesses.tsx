@@ -13,7 +13,6 @@ import {
 
 import { 
   GET_BUSINESSES,
-  CLIENT
 } from 'engine/state';
 
 type TProps = {
@@ -21,10 +20,8 @@ type TProps = {
 }
 
 const Businesses = ({ id }: TProps) => {
-  let client = useRecoilValue(CLIENT);
-  client.emit('GET_ITEMS')
-
   const getBusinesses = useRecoilValue(GET_BUSINESSES)
+
   return (
     <Panel id={id} >
       <PanelHeader separator={true}>

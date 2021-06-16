@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useAction } from 'engine';
 
@@ -32,7 +33,9 @@ type TProps = {
 const Shop = ({ id }: TProps) => {
   const client = useRecoilValue(CLIENT);
   const action = useAction();
-  client.emit('GET_ITEMS')
+
+  // eslint-disable-next-line
+  useMemo(() => client.emit('GET_ITEMS'), [])
 
   return (
     <Panel id={id} >
