@@ -1,6 +1,10 @@
-import { useRecoilState } from 'recoil';
+import {
+  useRecoilState,
+  // useRecoilValue 
+} from 'recoil';
 
 import {
+  // ACTIVE_VIEW_PANEL,
   SUBNAVIGATION_BAR_SELECT
 } from 'engine/state'
 
@@ -18,63 +22,72 @@ import {
   CardScroll,
   SubnavigationButton
 } from '@vkontakte/vkui'
+import { useEffect } from 'react';
 
 const Filter = () => {
   const [selected, setSelected] = useRecoilState(SUBNAVIGATION_BAR_SELECT)
+
   const btnsStyle = {
     marginLeft: 12,
     marginTop: 12,
     marginBottom: 12
   }
 
+  useEffect(() => {
+    return(() => {
+      setSelected({ selected: 'businesses', index: 0 })
+    })
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <CardScroll size="s" >
       <SubnavigationButton
         style={{ marginLeft: 0, marginTop: 12, marginBottom: 12 }}
-        selected={selected === 'businesses'}
-        onClick={() => setSelected('businesses')}
+        selected={selected.selected === 'businesses'}
+        onClick={() => setSelected({ selected: 'businesses', index: 0 })}
         before={<Icon28WorkOutline />}
         size="l"
       >Бизнесы</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'promotions'}
-        onClick={() => setSelected('promotions')}
+        selected={selected.selected === 'promotions'}
+        onClick={() => setSelected({ selected: 'promotions', index: 1 })}
         before={<Icon28TicketOutline />}
         size="l"
       >Акции</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'home'}
-        onClick={() => setSelected('home')}
+        selected={selected.selected === 'home'}
+        onClick={() => setSelected({ selected: 'home', index: 2 })}
         before={<Icon28HomeOutline />}
         size="l"
       >Дома и квартиры</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'cars'}
-        onClick={() => setSelected('cars')}
+        selected={selected.selected === 'cars'}
+        onClick={() => setSelected({ selected: 'cars', index: 3 })}
         before={<Icon28CarOutline />}
         size="l"
       >Машины</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'clothes'}
-        onClick={() => setSelected('clothes')}
+        selected={selected.selected === 'clothes'}
+        onClick={() => setSelected({ selected: 'clothes', index: 4 })}
         before={<Icon28TshirtOutline />}
         size="l"
       >Одежда</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'smartphones'}
-        onClick={() => setSelected('smartphones')}
+        selected={selected.selected === 'smartphones'}
+        onClick={() => setSelected({ selected: 'smartphones', index: 5 })}
         before={<Icon28SmartphoneOutline />}
         size="l"
       >Смартфоны</SubnavigationButton>
       <SubnavigationButton
         style={btnsStyle}
-        selected={selected === 'market'}
-        onClick={() => setSelected('market')}
+        selected={selected.selected === 'market'}
+        onClick={() => setSelected({ selected: 'market', index: 6 })}
         before={<Icon28MarketOutline />}
         size="l"
       >Рынок</SubnavigationButton>

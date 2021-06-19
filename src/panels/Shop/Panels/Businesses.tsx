@@ -1,38 +1,27 @@
-import { useRecoilValue } from 'recoil';
-
-import {
-  Panel,
-  PanelHeader,
-  PanelHeaderContent,
-} from '@vkontakte/vkui'
-
-import {
-  CardMyBalance,
-  ShopItems,
-} from 'components'
+import { ShopItems } from 'components';
 
 import {
   SYMBOLS_RUB,
-  GET_BUSINESSES,
 } from 'engine/state';
 
 type TProps = {
-  id: string;
+  arr: object[];
+  style: object;
 }
 
-const Businesses = ({ id }: TProps) => {
-  const getBusinesses = useRecoilValue(GET_BUSINESSES)
-
+const Businesses = ({ arr, style }: TProps) => {
   return (
-    <Panel id={id} >
-      <PanelHeader separator={true}>
-        <PanelHeaderContent status='Пассивный заработок - это про бизнесы!' before={true} aside>
-          Бизнесы
-        </PanelHeaderContent>
-      </PanelHeader>
-      <CardMyBalance />
-      {getBusinesses.map((item: any) => <ShopItems key={`id${item.id}`} img={item.img} title={item.title} status={`Доходность: ${item.earningsString} ${SYMBOLS_RUB}/час`} />)}
-    </Panel >
+    <div className="Shop__selectedPage container__businesses" style={style}>
+      {
+        arr.map((item: any) => <ShopItems
+          key={`id${item.id}`}
+          img={item.img}
+          title={item.title}
+          requirements={`Стоимость: ${item.costString} ${SYMBOLS_RUB}`}
+          status={`Доходность: ${item.earningsString} ${SYMBOLS_RUB}/час`}
+        />)
+      }
+    </div >
   )
 }
 

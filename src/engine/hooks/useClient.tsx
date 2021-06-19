@@ -30,7 +30,7 @@ const useClient = () => {
   const setName = useSetRecoilState(state.FIRST_LAST_NAME);
   const setPopout = useSetRecoilState(state.POPOUT);
 
-  const setBusinesses = useSetRecoilState(state.GET_BUSINESSES)
+  const setShop = useSetRecoilState(state.SHOP)
 
   useEffect(() => {
     client.on("connect", async () => {
@@ -66,7 +66,7 @@ const useClient = () => {
     client.on("BUSINESS", (data: TBusiness) => data && setBusiness(data))
     client.on("JOB", (data: TJob) => data && setJob(data))
 
-    client.on("GET_BUSINESSES", (data: any) => data && setBusinesses(data))
+    client.on("SHOP", (data: any) => data && setShop(data))
 
     window.setInterval(() => {
       client.emit("PING", {});

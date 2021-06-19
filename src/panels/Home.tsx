@@ -22,7 +22,6 @@ import {
   User,
   Menu,
 } from 'components'
-import { useEffect } from 'react';
 
 type TProps = {
   id: string;
@@ -30,7 +29,7 @@ type TProps = {
 
 const Home = ({ id }: TProps) => {
   const platform = useRecoilValue(PLATFORM);
-  useEffect(() => console.log(platform), [platform])
+
   return (
     <Panel id={id} >
       <PanelHeader separator={true} left={(!platform || platform === "web" || platform === "mobile-web") ? null : <Icon28GiftOutline className="gift-per-watch-video" onClick={() => {

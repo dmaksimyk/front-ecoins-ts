@@ -17,7 +17,10 @@ export type TPanelView = {
   activeView: string;
 }
 
-export type TSubnavigationBarSelect = "businesses" | "promotions" | "home" | "cars" | "clothes" | "smartphones" | "market";
+export type TSubnavigationBarSelect = {
+  selected: "businesses" | "promotions" | "home" | "cars" | "clothes" | "smartphones" | "market";
+  index: 0 | 1 | 2 | 3 | 4 | 5 | 6 | number;
+}
 
 export type TModals = "seeUserMore" | null;
 

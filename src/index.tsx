@@ -9,7 +9,7 @@ import {
 import { AdaptivityProvider, AppRoot, ConfigProvider } from '@vkontakte/vkui';
 
 bridge.send("VKWebAppGetClientVersion")
-  .then((data): any => {
+  .then((data: any) => {
     document.body.setAttribute("platform", data.platform);
   })
 

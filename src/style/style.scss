@@ -4,6 +4,7 @@
   width: 0;
 }
 
+// dev
 .Header__content {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -11,4 +12,17 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.Gallery {
+  cursor: default;
+  & * {
+    cursor: default;
+  }
+  & .Button {
+    cursor: pointer;
+    & * {
+      cursor: pointer;
+    }
+  }
 }

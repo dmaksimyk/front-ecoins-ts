@@ -1,4 +1,4 @@
-// vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=localhost --port=10888
+import { useEffect } from 'react';
 import { useClient, useAction } from 'engine';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -34,7 +34,6 @@ import {
   Home,
   Shop,
   Casino,
-  Businesses
 } from 'panels'
 
 import {
@@ -44,7 +43,11 @@ import {
 const App = () => {
   const platform = document.body.getAttribute('platform')
   const setPlatform = useSetRecoilState(PLATFORM)
-  setTimeout(() => setPlatform(platform), 5000)
+
+  useEffect(() => {
+    setPlatform(platform)
+    console.log('setPlatform:', platform)
+  }, [platform, setPlatform])
 
   useClient();
   const popout = useRecoilValue(POPOUT);
@@ -109,7 +112,6 @@ const App = () => {
       </View>
       <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout}>
         <Shop id="Shop" />
-        <Businesses id="Businesses" />
       </View>
     </Epic>
   )

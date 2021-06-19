@@ -1,47 +1,41 @@
 {
-  "name": "get-rich",
-  "version": "0.1.0",
+  "name": "front-ecoins-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "dmaksimyk <66935827+dmaksimyk@users.noreply.github.com>",
+  "license": "MIT",
   "private": true,
-  "homepage": "./",
-  "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.4",
-    "@types/react-dom": "^17.0.3",
-    "@types/react-redux": "^7.1.16",
-    "@vkontakte/vk-miniapps-deploy": "^0.0.25",
-    "cross-env": "^7.0.3"
-  },
   "dependencies": {
-    "@gmelum/vkui": "^3.14.2-beta.2",
-    "@types/react-window": "^1.8.3",
-    "@vkontakte/icons": "^1.79.0",
-    "@vkontakte/vk-bridge": "^2.4.0",
-    "@vkontakte/vkui": "^4.8.0",
-    "core-js": "^3.9.0",
+    "@vkontakte/icons": "^1.109.0",
+    "@vkontakte/vk-bridge": "^2.4.2",
+    "@vkontakte/vkjs": "^0.21.0",
+    "@vkontakte/vkui": "^4.9.0",
+    "core-js": "^3.14.0",
     "eruda": "^2.4.1",
     "eruda-code": "^2.0.0",
     "eruda-dom": "^2.0.0",
-    "immutability-helper": "^3.1.1",
     "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
-    "node-sass": "^5.0.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-redux": "^7.2.2",
-    "react-reveal": "^1.2.2",
-    "react-scripts": "4.0.3",
-    "react-window": "^1.8.6",
+    "node-sass": "^6.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
     "recoil": "^0.3.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
     "socket.io-client": "^4.1.2",
-    "typescript": "^4.1.2"
+    "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "@vkontakte/vk-miniapps-deploy": "^0.0.25",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
     "build": "react-scripts build",
-    "deploy": "vk-miniapps-deploy"
+    "deploy": "vk-miniapps-deploy",
+    "bridge": "vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=localhost --port=10888"
   },
   "eslintConfig": {
     "extends": [
