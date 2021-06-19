@@ -45,7 +45,7 @@ const User = ({ container }: Props) => {
     <Group className="User" separator="hide">
       <div className="User__container">
         <div className="User__avatar">
-          {donut ? <Icon12StarCircle className="User__donut_icon" /> : ''} 
+          {donut ? <Icon12StarCircle className="User__donut_icon" /> : ''}
           <Avatar className="User__avatar" src={img} alt='' size={64} />
         </div>
         <div className="User__info" style={{ height: 64, display: 'flex', alignItems: 'center' }}>
@@ -56,11 +56,11 @@ const User = ({ container }: Props) => {
         </div>
       </div>
       {container}
-      <Separator style={{margin: '12px 0'}}/>
+      <Separator style={{ margin: '12px 0' }} />
       <MiniInfoCell key='balance' before={<Icon20MoneyCircleOutline />} > Баланс: {balance} </MiniInfoCell>
       <MiniInfoCell key='exp' before={<Icon20Stars />} > Уровень: {exp} </MiniInfoCell>
       <MiniInfoCell key='moreInfo' before={<Icon20Info />} mode="more" onClick={() => action.setModal('seeUserMore')}> Подробная информация </MiniInfoCell>
-      <Separator style={{margin: '8px 0'}}/>
+      <Separator style={{ margin: '8px 0' }} />
     </Group>
   )
 }

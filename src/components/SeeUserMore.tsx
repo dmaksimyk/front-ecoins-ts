@@ -46,11 +46,11 @@ const SeeUserMore = () => {
       <MiniInfoCell key='balance_modal' before={<Icon20MoneyCircleOutline />} > Баланс: {balance} ₽ </MiniInfoCell>
       <MiniInfoCell key='exp_modal' before={<Icon20Stars />} > Уровень: {exp} </MiniInfoCell>
       <MiniInfoCell key='donut_modal' before={<Icon20DiamondOutline />} > Donut: {donut ? 'оформлен' : 'не оформлен'} </MiniInfoCell>
-      <MiniInfoCell key='rating_modal' before={<Icon20FavoriteOutline />} > Рейтинг: {myRating > 100 ? '100+' : myRating } место </MiniInfoCell>
+      <MiniInfoCell key='rating_modal' before={<Icon20FavoriteOutline />} > Рейтинг: {myRating > 100 ? '100+' : myRating} место </MiniInfoCell>
       <Separator style={{ marginTop: 8 }} />
       <Header>Заработок</Header>
-      <MiniInfoCell key='business' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Business' })} mode="add" after={<Icon24ChevronCompactRight/>} before={<Icon20WorkOutline/>}>Бизнес: {business.name ? business.name : 'нет'}</MiniInfoCell>
-      <MiniInfoCell key='job' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Job' })} mode="add" after={<Icon24ChevronCompactRight/>} before={<Icon24EmployeeOutline width={20} height={20}/>}>Работа: {job.name ? job.name : 'безработный'}</MiniInfoCell>
+      <MiniInfoCell key='business' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Business' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon20WorkOutline />}>Бизнес: {business.name ? business.name : 'нет'}</MiniInfoCell>
+      <MiniInfoCell key='job' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Job' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon24EmployeeOutline width={20} height={20} />}>Работа: {job.name ? job.name : 'безработный'}</MiniInfoCell>
     </div>
   )
 }
