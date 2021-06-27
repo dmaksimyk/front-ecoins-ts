@@ -1,10 +1,12 @@
 import {
   useRecoilState,
-  // useRecoilValue 
 } from 'recoil';
 
+import { 
+  useEffect 
+} from 'react';
+
 import {
-  // ACTIVE_VIEW_PANEL,
   SUBNAVIGATION_BAR_SELECT
 } from 'engine/state'
 
@@ -22,7 +24,6 @@ import {
   CardScroll,
   SubnavigationButton
 } from '@vkontakte/vkui'
-import { useEffect } from 'react';
 
 const Filter = () => {
   const [selected, setSelected] = useRecoilState(SUBNAVIGATION_BAR_SELECT)
@@ -34,11 +35,8 @@ const Filter = () => {
   }
 
   useEffect(() => {
-    return(() => {
-      setSelected({ selected: 'businesses', index: 0 })
-    })
-    // eslint-disable-next-line
-  }, [])
+    return(() => setSelected({ selected: 'businesses', index: 0 }))
+  }, [setSelected])
 
   return (
     <CardScroll size="s" >

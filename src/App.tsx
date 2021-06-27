@@ -45,8 +45,10 @@ const App = () => {
   const setPlatform = useSetRecoilState(PLATFORM)
 
   useEffect(() => {
-    setPlatform(platform)
-    console.log('setPlatform:', platform)
+    if (platform) {
+      setPlatform(platform)
+      console.log('setPlatform:', platform)
+    }
   }, [platform, setPlatform])
 
   useClient();

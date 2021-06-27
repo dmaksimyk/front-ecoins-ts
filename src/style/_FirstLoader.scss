@@ -1,0 +1,61 @@
+$paddingTop: 0px;
+
+.FirstLoader--close {
+  opacity: 0;
+  transition: opacity .3s var(--android-easing);
+}
+
+.FirstLoader {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+
+  & .FirstLoader--bg {
+    width: inherit;
+    height: inherit;
+    background: rgba(0,0,0,.5);
+    color: white;
+  
+    & .FirstLoader--header {
+      max-width: 250px;
+      padding: $paddingTop 32px;
+      padding-bottom: $paddingTop + 12px;
+      
+      & * {
+        text-transform: uppercase;
+        font: {
+          weight: 600;
+        }
+
+        &:nth-child(2) {
+          opacity: .7;
+        }
+      }
+    }
+
+    & .FirstLoader--progressParent {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      bottom: calc(var(--safe-area-inset-bottom) + 30px);
+      left: calc(50vw / 2);
+      padding: 5px;
+      border-radius: 50px;
+
+      & .FirstLoader--progress {
+        width: calc(100vw / 2);
+        max-width: calc(100vw / 2);
+      }
+    }
+
+    & .FirstLoader--status {
+      transition: .5s;
+      text-align: justify;
+      padding: 0 32px;
+      max-height: 400px;
+    }
+  }  
+}

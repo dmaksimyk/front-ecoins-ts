@@ -1,7 +1,7 @@
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import * as state from 'engine/state';
 import { useEffect } from 'react';
-import { CustomLoader } from 'components';
+import { ClientConnector } from 'components';
 import {
   START_APP,
   TBusiness,
@@ -38,10 +38,10 @@ const useClient = () => {
       setName(`${data.first_name} ${data.last_name}`)
       setId(data.id)
       setImg(data.photo_200)
-      setPopout(null)
+      // setPopout(null)
     });
-    client.on("connect_error", (err) => setPopout(<CustomLoader />));
-    client.on("disabled", (err) => setPopout(<CustomLoader />));
+    client.on("connect_error", (err) => setPopout(<ClientConnector />));
+    client.on("disabled", (err) => setPopout(<ClientConnector />));
 
     client.on("START_APP", (data: START_APP) => {
       data.checkin && setCheckin(data.checkin)

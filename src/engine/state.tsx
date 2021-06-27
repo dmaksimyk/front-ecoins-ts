@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { atom } from 'recoil';
 import { ReactNode } from "react";
-import { CustomLoader } from 'components';
+import { FirstLoader } from 'components';
 
 import {
   AppStory,
@@ -38,14 +38,14 @@ export const CLIENT = atom({
 // Глобальные переменные
 export const TOKEN = atom({ key: "token", default: token });
 export const PLATFORM = atom<string | null>({ key: "my_platform", default: null })
-export const POPOUT = atom<ReactNode | null>({ key: "popout", default: <CustomLoader /> });
+export const POPOUT = atom<ReactNode | null>({ key: "popout", default: <FirstLoader /> });
 export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
 export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Shop", activePanel: "Shop" }], });
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
   key: "active_view_panel",
   default: {
-    activeView: "Shop",
-    activePanel: 'Shop',
+    activeView: "Home",
+    activePanel: 'Home',
   }
 });
 
@@ -54,8 +54,8 @@ export const SYMBOLS_RUB = '₽';
 // Пользователь - Информация
 export const ID = atom<number>({ key: 'id', default: 1 })
 export const IMG = atom<string>({ key: 'img', default: 'https://vk.com/images/camera_200.png' })
-export const FIRST_LAST_NAME = atom<string>({ key: 'first_last_name', default: 'No Name' })
-export const BALANCE = atom<string>({ key: 'balance', default: '1 тыс.' });
+export const FIRST_LAST_NAME = atom<string | undefined>({ key: 'first_last_name', default: undefined })
+export const BALANCE = atom<string | undefined>({ key: 'balance', default: undefined });
 export const EXP = atom<string>({ key: 'exp', default: '1 (0/200 exp)' });
 export const CHECKIN = atom<string>({ key: 'checkin', default: '01 янв. 1999' });
 export const TRANSFER = atom<TTransfer>({ key: 'transfer', default: { lock: false, level: 25 } })
@@ -80,3 +80,8 @@ export const SUBNAVIGATION_BAR_SELECT = atom<TSubnavigationBarSelect>({
     index: 0
   }
 });
+
+export const hintsForFirstPopout = [
+  "В казино легко поднять и легко проиграть деньги, не советуем там зарабатывать деньги!",
+  "Заработать много - легко, просто стань бизнесменом. А акции компаний помогут тебе заработать еще больше!"
+]

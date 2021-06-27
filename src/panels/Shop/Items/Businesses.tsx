@@ -13,13 +13,16 @@ const Businesses = ({ arr, style }: TProps) => {
   return (
     <div className="Shop__selectedPage container__businesses" style={style}>
       {
-        arr.map((item: any) => <ShopItems
+        arr.map((item: any) => item.type === "businesses" ? <ShopItems
+          id={item.id}
+          type={item.type}
+          disable={item.disable}
           key={`id${item.id}`}
           img={item.img}
           title={item.title}
-          requirements={`Стоимость: ${item.costString} ${SYMBOLS_RUB}`}
-          status={`Доходность: ${item.earningsString} ${SYMBOLS_RUB}/час`}
-        />)
+          status={`Доход: ${item.earningsString} ${SYMBOLS_RUB}/час`}
+          requirements={`Цена: ${item.costString} ${SYMBOLS_RUB}`}
+        /> : null)
       }
     </div >
   )
