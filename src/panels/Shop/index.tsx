@@ -1,17 +1,19 @@
+import { useRecoilValue } from 'recoil'
+
 import {
   Panel,
-  PanelHeader,
-  PanelHeaderContent,
   Separator,
 } from '@vkontakte/vkui'
 
 import {
   CardMyBalance,
   Filter,
-  Slider
+  Slider,
+  StyledPanelHeader
 } from 'components'
-import { SHOP } from 'engine/state'
-import { useRecoilValue } from 'recoil'
+import { 
+  SHOP 
+} from 'engine/state'
 
 type TProps = {
   id: string;
@@ -22,18 +24,10 @@ const Shop = ({ id }: TProps) => {
 
   return (
     <Panel id={id} className="Shop" >
-      <PanelHeader
-        separator={true}
-
-      >
-        <PanelHeaderContent
-          status='Крутые шмотки только тут!'
-          before={true}
-          aside
-        >
-          Магазин
-        </PanelHeaderContent>
-      </PanelHeader>
+      <StyledPanelHeader 
+        caption="Магазин"
+        status="Крутые шмотки только тут"
+      />
       <CardMyBalance />
       {
         shop.length > 1 ? [

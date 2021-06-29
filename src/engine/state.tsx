@@ -50,8 +50,8 @@ export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeVi
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
   key: "active_view_panel",
   default: {
-    activeView: "Home",
-    activePanel: 'Home',
+    activeView: "Earnings",
+    activePanel: 'Earnings',
   }
 });
 

@@ -15,8 +15,6 @@ import {
 import {
   View,
   Epic,
-  Tabbar,
-  TabbarItem,
   Panel,
   ModalPageHeader,
   ModalRoot,
@@ -24,20 +22,14 @@ import {
 } from '@vkontakte/vkui'
 
 import {
-  Icon28UserCircleOutline,
-  Icon28GameOutline,
-  Icon28MoneyWadOutline,
-  Icon28ShoppingCartOutline
-} from '@vkontakte/icons'
-
-import {
   Home,
   Shop,
   Casino,
+  Earnings,
 } from 'panels'
 
 import {
-  SeeUserMore
+  SeeUserMore, StyledTabbar
 } from 'components'
 
 const App = () => {
@@ -75,39 +67,14 @@ const App = () => {
 
   return (
     <Epic activeStory={activeViewPanel.activeView} tabbar={
-      <Tabbar>
-        <TabbarItem
-          onClick={() => action.nextPage({ activeView: "Home", activePanel: "Home" })}
-          selected={activeViewPanel.activeView === 'Home'}
-          data-story="Home"
-          text="Профиль"
-        ><Icon28UserCircleOutline /></TabbarItem>
-        <TabbarItem
-          onClick={() => action.nextPage({ activeView: "Job", activePanel: "Job" })}
-          selected={activeViewPanel.activeView === 'Job'}
-          data-story="Job"
-          text="Заработок"
-        ><Icon28MoneyWadOutline className="icon-add-post" /></TabbarItem>
-        <TabbarItem
-          onClick={() => action.nextPage({ activeView: "Entertainment", activePanel: "Entertainment" })}
-          selected={activeViewPanel.activeView === 'Entertainment'}
-          data-story="Entertainment"
-          text="Развлечения"
-        ><Icon28GameOutline /></TabbarItem>
-        <TabbarItem
-          onClick={() => action.nextPage({ activeView: "Shop", activePanel: "Shop" })}
-          selected={activeViewPanel.activeView === 'Shop'}
-          data-story="Shop"
-          text="Магазин"
-        ><Icon28ShoppingCartOutline /></TabbarItem>
-      </Tabbar>
+      <StyledTabbar />
     }>
       <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout.popout} modal={modals}>
         <Home id="Home" />
         <Panel id="Rating">Rating</Panel>
       </View>
-      <View id="Job" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
-        <Panel id="Job">Job</Panel>
+      <View id="Earnings" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
+        <Earnings id="Earnings"/>
       </View>
       <View id="Entertainment" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
         <Casino id="Entertainment" />
