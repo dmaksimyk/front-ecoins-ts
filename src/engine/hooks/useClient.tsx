@@ -34,14 +34,21 @@ const useClient = () => {
   const setShop = useSetRecoilState(state.SHOP)
 
   useEffect(() => {
-    client.on("connect", async () => {
-      if ( popout.type !== "FirstLoader" ) setPopout({popout: null, type: null})
-      let data = await bridge.send('VKWebAppGetUserInfo')
-      setName(`${data.first_name} ${data.last_name}`)
-      setId(data.id)
-      setImg(data.photo_200)
-    });
-    client.on("connect_error", () => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
+    client.on("connect", () => bridge.send('VKWebAppGetUserInfo')
+      .then((data) => {
+        if (popout.popout !== "FirstLoader") {
+          setPopout({popout: null, type: null})
+          setName(`${data.first_name} ${data.last_name}`)
+          setId(data.id)
+          setImg(data.photo_200)
+        } else {
+          setName(`${data.first_name} ${data.last_name}`)
+          setId(data.id)
+          setImg(data.photo_200)
+        }
+      })
+    );
+    client.on("connect_error", (err) => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
     client.on("disabled", () => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
 
     client.on("START_APP", (data: START_APP) => {
