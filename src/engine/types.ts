@@ -25,6 +25,7 @@ export type TSubnavigationBarSelect = {
 export type TModals = "seeUserMore" | null;
 
 export type START_APP = {
+  subscribe: boolean,
   checkin: string,
   online: string,
   balance: string,

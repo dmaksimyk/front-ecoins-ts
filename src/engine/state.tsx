@@ -19,6 +19,7 @@ moment.locale('ru');
 
 const url = new URL(window.location.href);
 const token = Buffer.from(url.search.slice(1)).toString('base64').replace(/[a-z]/gi, char => /[a-z]/.test(char) ? char.toUpperCase() : char.toLowerCase());
+// "DMTFywnJzxnZx3rVA2vUx3nLDhrPBMDZpsz2A19HChbFAwq9nZGYndaZnIz2A19HCMvFBM90AwzPy2f0Aw9UC19LBMfIBgvKptaMDMTFAxnFyxbWx3vZzxi9mcz2A19PC19MyxzVCML0zt0WjNzRx2XHBMD1ywDLpxj1jNzRx3bSyxrMB3jTpw1VyMLSzv93zwiMDMTFCMvMpw90AgvYjNzRx3rZpte2mJq5mtK3ndKMDMTFDxnLCL9Pzd00mtKXndKWntyMC2LNBJ14uZjqAtGWuuDzntzRx0nMAunbs2vhruX4BLfhvNfmEtbsDKHXtJzfANnv"
 
 export const CLIENT = atom({
   key: "client", default: io("ws://localhost:16888", {
@@ -38,7 +39,12 @@ export const CLIENT = atom({
 // Глобальные переменные
 export const TOKEN = atom({ key: "token", default: token });
 export const PLATFORM = atom<string | null>({ key: "my_platform", default: null })
-export const POPOUT = atom<ReactNode | null>({ key: "popout", default: <FirstLoader /> });
+export const POPOUT = atom<{ popout: ReactNode | null, type: "FirstLoader" | "Reconnect" | null }>({
+  key: "popout", default: {
+    popout: <FirstLoader />, 
+    type: "FirstLoader"
+  }
+});
 export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
 export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Shop", activePanel: "Shop" }], });
 export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
@@ -68,6 +74,7 @@ export const BLOCKED = atom<boolean>({ key: "blocked", default: false });
 export const BONUS = atom<boolean>({ key: "bonus", default: false });
 export const DONUT = atom<boolean>({ key: "donut", default: false });
 export const ONLINE_USER = atom<string>({ key: "online_user", default: '0' });
+export const SUBSCRIBE_GROUP = atom<boolean | undefined>({ key: 'subscribe_group', default: undefined })
 
 // Магазин - items
 export const SHOP = atom<object[]>({ key: "shop", default: [] });

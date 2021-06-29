@@ -39,7 +39,7 @@ const FirstLoader = () => {
     if (progress >= 100) {
       console.log('second data is loaded')
       setTimeout(() => setClose('FirstLoader--close'), 2700)
-      setTimeout(() => setPopout(undefined), 3000)
+      setTimeout(() => setPopout({popout: null, type: null}), 3000)
     }
 
     if (progress === 50) console.log('first data is loaded')

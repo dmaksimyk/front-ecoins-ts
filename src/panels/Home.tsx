@@ -5,7 +5,7 @@ import {
 } from 'recoil';
 
 import { 
-  PLATFORM 
+  PLATFORM,  
 } from 'engine/state';
 
 import {
@@ -21,6 +21,7 @@ import {
 import {
   User,
   Menu,
+  UserMore
 } from 'components'
 
 type TProps = {
@@ -29,7 +30,7 @@ type TProps = {
 
 const Home = ({ id }: TProps) => {
   const platform = useRecoilValue(PLATFORM);
-
+  
   return (
     <Panel id={id} >
       <PanelHeader separator={true} left={(!platform || platform === "web" || platform === "mobile-web") ? null : <Icon28GiftOutline className="gift-per-watch-video" onClick={() => {
@@ -47,6 +48,7 @@ const Home = ({ id }: TProps) => {
         </PanelHeaderContent>
       </PanelHeader>
       <User container={<Menu />} />
+      <UserMore />
     </Panel >
   )
 }

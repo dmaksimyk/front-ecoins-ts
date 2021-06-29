@@ -2,11 +2,8 @@
   transition: .24s;
   overflow: hidden;
   background: inherit;
-
-  &:active {
-    transition: .135s;
-    background: rgba(143, 143, 143, 0.1);
-  }
+  // display: flex;
+  // justify-content: space-between;
 
   & .Menu {
     overflow: hidden;

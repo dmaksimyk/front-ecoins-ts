@@ -9,7 +9,7 @@ import {
   ACTIVE_MODAL,
   ACTIVE_VIEW_PANEL,
   PLATFORM,
-  POPOUT
+  POPOUT,
 } from 'engine/state';
 
 import {
@@ -102,17 +102,17 @@ const App = () => {
         ><Icon28ShoppingCartOutline /></TabbarItem>
       </Tabbar>
     }>
-      <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout} modal={modals}>
+      <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout.popout} modal={modals}>
         <Home id="Home" />
         <Panel id="Rating">Rating</Panel>
       </View>
-      <View id="Job" activePanel={activeViewPanel.activePanel} popout={popout}>
+      <View id="Job" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
         <Panel id="Job">Job</Panel>
       </View>
-      <View id="Entertainment" activePanel={activeViewPanel.activePanel} popout={popout}>
+      <View id="Entertainment" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
         <Casino id="Entertainment" />
       </View>
-      <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout}>
+      <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
         <Shop id="Shop" />
       </View>
     </Epic>

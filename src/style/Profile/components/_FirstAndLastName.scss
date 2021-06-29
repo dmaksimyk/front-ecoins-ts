@@ -1,0 +1,13 @@
+.name-container {
+  & .name-container__text-id {
+    color: var(--text_secondary);
+    margin-top: 4px !important;
+  }
+
+  & .name-container__text-name, 
+    .name-container__text-id {
+      margin: 0;
+      margin-left: 12px; 
+      text-align: left;
+  }
+}

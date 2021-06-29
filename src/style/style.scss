@@ -1,11 +1,32 @@
-@import "./Menu", "./Profile", "./Gift", "./Casino", "./Roll", "./Random", "./Logs", './FirstLoader';
+@import 
+"./Menu", 
+"./Profile/Profile", 
+"./Gift", 
+"./Casino", 
+"./Roll", 
+"./Random", 
+"./Logs", 
+"./FirstLoader",
+"./Subscribe";
 
+// dev
 ::-webkit-scrollbar {
   width: 0;
 }
 
-// dev
 .Header__content {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// prod
+
+.dell-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

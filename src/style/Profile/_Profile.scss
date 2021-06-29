@@ -1,0 +1,20 @@
+@import 
+'./components/FirstAndLastName', 
+'./components/Avatar',
+'./components/MenuCards';
+
+.user {
+  & .vkuiGroup__inner {
+    padding-bottom: 0 !important;
+  }
+  
+  & .user-container__name-and-avatar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  & .user-container__separator {
+    margin: 8px 0;
+  }
+}

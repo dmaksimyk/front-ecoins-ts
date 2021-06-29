@@ -1,40 +1,38 @@
 import {
   Icon24MoneySendOutline,
   Icon24CubeBoxOutline,
-  Icon24FavoriteOutline
+  Icon24FavoriteOutline,
 } from '@vkontakte/icons'
 
 import {
-  Group,
-  CardGrid,
-  Card,
-  Text
+  Div,
 } from '@vkontakte/vkui'
+
+import {
+  MenuCards,
+  MenuButton
+} from './components';
 
 const Menu = () => {
   return (
-    <Group separator="auto">
-      <CardGrid size="s">
-        <Card className="Card__menu" >
-          <div className="Menu">
-            <Icon24FavoriteOutline width={28} height={28} />
-            <Text className="menu-text" weight="regular">Рейтинг</Text>
-          </div>
-        </Card>
-        <Card className="Card__menu">
-          <div className="Menu">
-            <Icon24MoneySendOutline width={28} height={28} />
-            <Text className="menu-text" weight="regular">Перевести</Text>
-          </div>
-        </Card>
-        <Card className="Card__menu">
-          <div className="Menu">
-            <Icon24CubeBoxOutline width={28} height={28} />
-            <Text className="menu-text" weight="regular">Инвентарь</Text>
-          </div>
-        </Card>
-      </CardGrid>
-    </Group>
+    <Div style={{ paddingBottom: 6 }} className="Card__menu" >
+      <MenuButton />
+      <MenuCards
+        img={<Icon24FavoriteOutline />}
+        text='Рейтинг'
+        event={() => console.log('Рейтинг')}
+      />
+      <MenuCards
+        img={<Icon24MoneySendOutline />}
+        text='Перевод'
+        event={() => console.log('Перевод')}
+      />
+      <MenuCards
+        img={<Icon24CubeBoxOutline />}
+        text='Инвентарь'
+        event={() => console.log('Инвентарь')}
+      />
+    </Div>
   )
 };
 

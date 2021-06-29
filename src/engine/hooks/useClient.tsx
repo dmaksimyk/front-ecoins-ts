@@ -1,4 +1,4 @@
-import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 import * as state from 'engine/state';
 import { useEffect } from 'react';
 import { ClientConnector } from 'components';
@@ -14,6 +14,7 @@ const useClient = () => {
   let client = useRecoilValue(state.CLIENT);
 
   const setCheckin = useSetRecoilState(state.CHECKIN)
+  const setSubscribeGroup = useSetRecoilState(state.SUBSCRIBE_GROUP)
   const setOnlineUser = useSetRecoilState(state.ONLINE_USER);
   const setBalance = useSetRecoilState(state.BALANCE)
   const setExp = useSetRecoilState(state.EXP)
@@ -28,25 +29,27 @@ const useClient = () => {
   const setImg = useSetRecoilState(state.IMG);
   const setId = useSetRecoilState(state.ID);
   const setName = useSetRecoilState(state.FIRST_LAST_NAME);
-  const setPopout = useSetRecoilState(state.POPOUT);
+  const [popout, setPopout] = useRecoilState(state.POPOUT);
 
   const setShop = useSetRecoilState(state.SHOP)
 
   useEffect(() => {
     client.on("connect", async () => {
+      if ( popout.type !== "FirstLoader" ) setPopout({popout: null, type: null})
       let data = await bridge.send('VKWebAppGetUserInfo')
       setName(`${data.first_name} ${data.last_name}`)
       setId(data.id)
       setImg(data.photo_200)
-      // setPopout(null)
     });
-    client.on("connect_error", (err) => setPopout(<ClientConnector />));
-    client.on("disabled", (err) => setPopout(<ClientConnector />));
+    client.on("connect_error", () => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
+    client.on("disabled", () => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
 
     client.on("START_APP", (data: START_APP) => {
+      setSubscribeGroup(data.subscribe)
+
       data.checkin && setCheckin(data.checkin)
       data.online && setOnlineUser(data.online)
-      data.balance && setBalance(`${data.balance} ₽`)
+      data.balance && setBalance(`${data.balance} ${state.SYMBOLS_RUB}`)
       data.exp && setExp(data.exp)
       data.bonus && setBonus(data.bonus)
       data.donut && setDonut(data.donut)
@@ -58,7 +61,7 @@ const useClient = () => {
     })
 
     client.on("ONLINE_USER", (data: string) => data && setOnlineUser(data))
-    client.on("BALANCE", (data: string) => data && setBalance(data))
+    client.on("BALANCE", (data: string) => data && setBalance(`${data} ${state.SYMBOLS_RUB}`))
     client.on("EXP", (data: string) => data && setExp(data))
     client.on("BONUS", (data: string) => data && setExp(data))
     client.on("BLOCKED", (data: boolean) => data && setBlocked(data))
@@ -67,6 +70,8 @@ const useClient = () => {
     client.on("JOB", (data: TJob) => data && setJob(data))
 
     client.on("SHOP", (data: any) => data && setShop(data))
+
+    client.on("SUBSCRIBE_GROUP", (data: boolean) => data && setSubscribeGroup(data))
 
     window.setInterval(() => {
       client.emit("PING", {});
