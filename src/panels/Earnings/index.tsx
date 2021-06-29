@@ -3,7 +3,8 @@ import {
 } from '@vkontakte/vkui'
 
 import { 
-  StyledPanelHeader 
+  StyledPanelHeader,
+  EarningsHomePage 
 } from 'components'
 
 type TProps = {
@@ -15,8 +16,9 @@ const Job = ({id}: TProps) => {
     <Panel id={id}>
       <StyledPanelHeader 
         caption="Заработок" 
-        status="Здесь запах денег"
+        status="Здесь пахнет деньгами"
       />
+      <EarningsHomePage />
     </Panel>
   )
 }
