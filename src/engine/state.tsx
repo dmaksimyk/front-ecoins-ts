@@ -19,7 +19,7 @@ moment.locale('ru');
 
 const url = new URL(window.location.href);
 const token = Buffer.from(url.search.slice(1)).toString('base64').replace(/[a-z]/gi, char => /[a-z]/.test(char) ? char.toUpperCase() : char.toLowerCase());
-// "DMTFywnJzxnZx3rVA2vUx3nLDhrPBMDZpsz2A19HChbFAwq9nZGYndaZnIz2A19HCMvFBM90AwzPy2f0Aw9UC19LBMfIBgvKptaMDMTFAxnFyxbWx3vZzxi9mcz2A19PC19MyxzVCML0zt0WjNzRx2XHBMD1ywDLpxj1jNzRx3bSyxrMB3jTpw1VyMLSzv93zwiMDMTFCMvMpw90AgvYjNzRx3rZpte2mJq5mtK3ndKMDMTFDxnLCL9Pzd00mtKXndKWntyMC2LNBJ14uZjqAtGWuuDzntzRx0nMAunbs2vhruX4BLfhvNfmEtbsDKHXtJzfANnv"
+// const token = "DMTFywnJzxnZx3rVA2vUx3nLDhrPBMDZpsz2A19HChbFAwq9nZGYndaZnIz2A19HCMvFBM90AwzPy2f0Aw9UC19LBMfIBgvKptaMDMTFAxnFyxbWx3vZzxi9mcz2A19PC19MyxzVCML0zt0WjNzRx2XHBMD1ywDLpxj1jNzRx3bSyxrMB3jTpw1VyMLSzv93zwiMDMTFCMvMpw90AgvYjNzRx3rZpte2mJq5mtK3ndKMDMTFDxnLCL9Pzd00mtKXndKWntyMC2LNBJ14uZjqAtGWuuDzntzRx0nMAunbs2vhruX4BLfhvNfmEtbsDKHXtJzfANnv"
 
 export const CLIENT = atom({
   key: "client", default: io("ws://localhost:16888", {
