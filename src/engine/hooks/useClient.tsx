@@ -1,4 +1,9 @@
-import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
+import {
+  useSetRecoilState,
+  useRecoilValue,
+  useRecoilState
+} from 'recoil';
+
 import * as state from 'engine/state';
 import { useEffect } from 'react';
 import { ClientConnector } from 'components';
@@ -9,10 +14,10 @@ import {
   TJob
 } from 'engine/types'
 import bridge from '@vkontakte/vk-bridge'
+import { useCall } from 'engine';
 
 const useClient = () => {
-  let client = useRecoilValue(state.CLIENT);
-
+  const client = useRecoilValue(state.CLIENT);
   const setCheckin = useSetRecoilState(state.CHECKIN)
   const setSubscribeGroup = useSetRecoilState(state.SUBSCRIBE_GROUP)
   const setOnlineUser = useSetRecoilState(state.ONLINE_USER);
@@ -29,27 +34,23 @@ const useClient = () => {
   const setImg = useSetRecoilState(state.IMG);
   const setId = useSetRecoilState(state.ID);
   const setName = useSetRecoilState(state.FIRST_LAST_NAME);
-  const [popout, setPopout] = useRecoilState(state.POPOUT);
+  const [popout, setPopout] = useCall(state.POPOUT);
 
   const setShop = useSetRecoilState(state.SHOP)
 
   useEffect(() => {
     client.on("connect", () => bridge.send('VKWebAppGetUserInfo')
       .then((data) => {
-        if (popout.popout !== "FirstLoader") {
-          setPopout({popout: null, type: null})
-          setName(`${data.first_name} ${data.last_name}`)
-          setId(data.id)
-          setImg(data.photo_200)
-        } else {
-          setName(`${data.first_name} ${data.last_name}`)
-          setId(data.id)
-          setImg(data.photo_200)
-        }
-      })
-    );
-    client.on("connect_error", (err) => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
-    client.on("disabled", () => setPopout({popout: <ClientConnector />, type: "Reconnect"}));
+        setName(`${data.first_name} ${data.last_name}`)
+        setId(data.id)
+        setImg(data.photo_200)
+
+        popout()
+          .then((data) => ((data as any)?.type?.type !== "FirstLoader") && setPopout(undefined))
+      }));
+      
+    client.on("connect_error", (err) => setPopout(<ClientConnector />));
+    client.on("disabled", () => setPopout(<ClientConnector />));
 
     client.on("START_APP", (data: START_APP) => {
       setSubscribeGroup(data.subscribe)

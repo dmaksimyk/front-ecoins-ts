@@ -1,4 +1,5 @@
 import { ModalPage, ModalPageHeader } from "@vkontakte/vkui"
+import { useNavigation } from "engine"
 import { ReactNode } from "react"
 
 type TProps = {
@@ -9,8 +10,11 @@ type TProps = {
 }
 
 const ModalsModalPage = ({ id, height = 200, header, children }: TProps) => {
+  const history = useNavigation()
+
   return (
     <ModalPage
+      onClose={() => history.backPage()}
       settlingHeight={height}
       id={id}
       header={

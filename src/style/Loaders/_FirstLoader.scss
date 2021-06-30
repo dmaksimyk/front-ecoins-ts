@@ -18,7 +18,8 @@ $paddingTop: 0px;
     color: white;
   
     & .FirstLoader--header {
-      max-width: 250px;
+      width: 70%;
+      max-width: 400px;
       padding: $paddingTop 32px;
       padding-bottom: $paddingTop + 12px;
       
@@ -34,28 +35,20 @@ $paddingTop: 0px;
       }
     }
 
-    & .FirstLoader--progressParent {
+    & .FirstLoader-advice__container {
       position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: white;
-      bottom: calc(var(--safe-area-inset-bottom) + 30px);
-      left: calc(50vw / 2);
-      padding: 5px;
-      border-radius: 50px;
-
-      & .FirstLoader--progress {
-        width: calc(100vw / 2);
-        max-width: calc(100vw / 2);
-      }
+      bottom: calc(var(--safe-area-inset-bottom) + 32px);
+      padding: 0 32px;
+      transition: .5s;
     }
 
-    & .FirstLoader--status {
-      transition: .5s;
+    & .FirstLoader-advice__text {
       text-align: justify;
-      padding: 0 32px;
+    }
+
+    & .FirstLoader-advice__header {
       max-height: 400px;
+      opacity: .7;
     }
   }  
 }

@@ -1,0 +1,50 @@
+.FLoaderAnimation-load__container {
+  opacity: 0.9;
+  position: absolute;
+  width: 100vw;
+  bottom: calc((50vh - 60px) + var(--safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & .FLoaderAnimation-icon__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    animation: animIconLoader 2.5s ease-in-out 300ms infinite;
+
+    & * {
+      color: var(--destructive);
+    }
+  }
+
+  & .FirstLoader--progressParent {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 5px;
+    border-radius: 50px;
+
+    & .FirstLoader--progress {
+      width: calc(100vw / 2);
+      max-width: calc(100vw / 2);
+    }
+  }
+}
+
+@keyframes animIconLoader {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}

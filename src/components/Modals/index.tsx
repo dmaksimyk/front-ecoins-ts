@@ -1,5 +1,5 @@
 import { ModalRoot } from "@vkontakte/vkui";
-import { useAction } from "engine";
+import { useNavigation } from "engine";
 import { ACTIVE_MODAL } from "engine/state";
 import { useRecoilValue } from "recoil";
 import { InformationUser } from "./components";
@@ -10,12 +10,12 @@ import {
 
 const Modals = () => {
   const activeModal = useRecoilValue(ACTIVE_MODAL)
-  const action = useAction()
+  const history = useNavigation()
 
   return (
     <ModalRoot 
       activeModal={activeModal}
-      onClose={() => action.setModal(null)}
+      onClose={() => history.backPage()}
     >
       <ModalPage 
         id="seeUserMore"

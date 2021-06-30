@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { useRecoilValue } from "recoil"
-import { useAction } from 'engine';
-import { ACTIVE_VIEW_PANEL } from "engine/state"
+import { useNavigation } from 'engine';
+import { ACTIVE_VIEW } from "engine/state"
 import { TabbarItem } from "@vkontakte/vkui"
 
 type TProps = {
@@ -11,16 +11,13 @@ type TProps = {
 }
 
 const StyledTabbarItem = ({ text, page, icon }: TProps) => {
-  const action = useAction();
-  const activeViewPanel = useRecoilValue(ACTIVE_VIEW_PANEL)
+  const history = useNavigation();
+  const activeView = useRecoilValue(ACTIVE_VIEW)
 
   return (
     <TabbarItem
-      onClick={() => action.nextPage({
-        activeView: page,
-        activePanel: page
-      })}
-      selected={activeViewPanel.activeView === page}
+      onClick={() => history.nextPage({ activeView: page })}
+      selected={activeView === page}
       data-story={page}
       text={text}
     >

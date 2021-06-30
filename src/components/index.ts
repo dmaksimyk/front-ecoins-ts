@@ -9,7 +9,7 @@ export { default as StyledTabbar } from './Rest/StyledTabbar';
 // loaders
 export { default as Loader } from './Loaders/Loader' 
 export { default as ClientConnector } from './Loaders/ClientConnector';
-export { default as FirstLoader } from './Loaders/FirstLoader';
+export { default as FirstLoader } from './Loaders/FirstLoader/index';
 
 // modals
 export { default as Modals } from './Modals';

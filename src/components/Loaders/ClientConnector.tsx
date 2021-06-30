@@ -19,4 +19,6 @@ const CustomLoader = () => {
   )
 }
 
+(CustomLoader as any).type = "CustomLoader"
+
 export default CustomLoader

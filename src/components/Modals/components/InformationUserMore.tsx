@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { useAction } from 'engine'
+import { useNavigation } from 'engine'
 import {
   BALANCE,
   ID,
@@ -36,7 +36,7 @@ const SeeUserMore = () => {
   const job = useRecoilValue(MY_JOB)
   const myRating = useRecoilValue(MY_RATING)
 
-  const action = useAction()
+  const navigation = useNavigation()
 
   return (
     <div style={{ paddingBottom: 12 }}>
@@ -49,8 +49,8 @@ const SeeUserMore = () => {
       <MiniInfoCell key='rating_modal' before={<Icon20FavoriteOutline />} > Рейтинг: {myRating > 100 ? '100+' : myRating} место </MiniInfoCell>
       <Separator style={{ marginTop: 8 }} />
       <Header>Заработок</Header>
-      <MiniInfoCell key='business' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Business' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon20WorkOutline />}>Бизнес: {business.name ? business.name : 'нет'}</MiniInfoCell>
-      <MiniInfoCell key='job' onClick={() => action.nextPage({ activeView: 'Job', activePanel: 'Job' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon24EmployeeOutline width={20} height={20} />}>Работа: {job.name ? job.name : 'безработный'}</MiniInfoCell>
+      <MiniInfoCell key='business' onClick={() => navigation.nextPage({ activeView: 'Earnings', activePanel: 'Business' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon20WorkOutline />}>Бизнес: {business.name ? business.name : 'нет'}</MiniInfoCell>
+      <MiniInfoCell key='earnings' onClick={() => navigation.nextPage({ activeView: 'Earnings', activePanel: 'Job' })} mode="add" after={<Icon24ChevronCompactRight />} before={<Icon24EmployeeOutline width={20} height={20} />}>Работа: {job.name ? job.name : 'безработный'}</MiniInfoCell>
     </div>
   )
 }

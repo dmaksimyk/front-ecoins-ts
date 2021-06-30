@@ -4,12 +4,10 @@ import { ReactNode } from "react";
 import { FirstLoader } from 'components';
 
 import {
-  AppStory,
-  TPanelView,
   TTransfer,
   TBusiness,
   TJob,
-  TModals,
+  TAppSector,
   TSubnavigationBarSelect
 } from 'engine/types';
 
@@ -36,24 +34,32 @@ export const CLIENT = atom({
   })
 });
 
+export const defaultActive: TAppSector = {
+  activePanel: "Main",
+  activePage: undefined,
+  activeModal: undefined,
+  activePopout: undefined,
+}
+
+const mapHistory = new Map<string, TAppSector[]>();
+mapHistory
+  .set("Home", [defaultActive])
+  .set("Earnings", [defaultActive])
+  .set("Entertainment", [defaultActive])
+  .set("Shop", [defaultActive])
+
 // Глобальные переменные
+export const ACTIVE_VIEW = atom<string>({ key: "active_view", default: "Home" });
+export const ACTIVE_PANEL = atom<string>({ key: "active_panel", default: defaultActive.activePanel });
+export const ACTIVE_PAGE = atom<string | number | undefined>({ key: "active_page", default: defaultActive.activePage });
+export const ACTIVE_MODAL = atom<string | undefined>({ key: "active_modal", default: defaultActive.activeModal });
+export const ACTIVE_POPOUT = atom<ReactNode | undefined>({ key: "active_popout", default: defaultActive.activePopout });
+
+export const APP_HISTORY = atom<Map<string, TAppSector[]>>({ key: "app_history", default: mapHistory });
+
 export const TOKEN = atom({ key: "token", default: token });
 export const PLATFORM = atom<string | null>({ key: "my_platform", default: null })
-export const POPOUT = atom<{ popout: ReactNode | null, type: "FirstLoader" | "Reconnect" | null }>({
-  key: "popout", default: {
-    popout: <FirstLoader />, 
-    type: "FirstLoader"
-  }
-});
-export const ACTIVE_MODAL = atom<TModals>({ key: "active_modal", default: null });
-export const APP_STORY = atom<AppStory>({ key: "app_story", default: [{ activeView: "Shop", activePanel: "Shop" }], });
-export const ACTIVE_VIEW_PANEL = atom<TPanelView>({
-  key: "active_view_panel",
-  default: {
-    activeView: "Earnings",
-    activePanel: 'Earnings',
-  }
-});
+export const POPOUT = atom<ReactNode | undefined>({ key: "popout", default: <FirstLoader />});
 
 export const SYMBOLS_RUB = '₽';
 
@@ -89,6 +95,9 @@ export const SUBNAVIGATION_BAR_SELECT = atom<TSubnavigationBarSelect>({
 });
 
 export const hintsForFirstPopout = [
-  "В казино легко поднять и легко проиграть деньги, не советуем там зарабатывать деньги!",
-  "Заработать много - легко, просто стань бизнесменом. А акции компаний помогут тебе заработать еще больше!"
+  "В казино легко поднять и проиграть деньги, не советуем зарабатывать таким способом!",
+  "Чтобы не заскучать, заходите почаще в раздел: Развлечения! =)",
+  "Заработать много - легко, просто стань владельцем бизнеса, а работа и акции компаний помогут заработать еще больше!",
+  "Бонус зависит от вашего уровня, не забывайте его получать, вы приятно удивитесь!",
+  "Играя в развлечениях можно легко прокачать уровень, ведь при игре от 5 тыс. " + SYMBOLS_RUB + ' , вы, получаете exp!'
 ]

@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
-import { useClient } from 'engine';
+import { useClient, useNavigation } from 'engine';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import '@vkontakte/vkui/dist/vkui.css'
 import './style/style.scss';
 
 import {
-  ACTIVE_VIEW_PANEL,
+  ACTIVE_PANEL,
+  ACTIVE_VIEW,
   PLATFORM,
   POPOUT,
 } from 'engine/state';
@@ -33,6 +34,18 @@ const App = () => {
   const platform = document.body.getAttribute('platform')
   const setPlatform = useSetRecoilState(PLATFORM)
 
+  useClient();
+  const history = useNavigation()
+  const activeView = useRecoilValue(ACTIVE_VIEW);
+  const activePanel = useRecoilValue(ACTIVE_PANEL);
+  const popout = useRecoilValue(POPOUT)
+
+  useEffect(() => {
+    window.addEventListener('popstate', () => history.backPage());
+    window.history.pushState(undefined, "");
+    // eslint-disable-next-line
+  }, [])
+
   useEffect(() => {
     if (platform) {
       setPlatform(platform)
@@ -40,27 +53,23 @@ const App = () => {
     }
   }, [platform, setPlatform])
 
-  useClient();
-  const popout = useRecoilValue(POPOUT);
-  const activeViewPanel = useRecoilValue(ACTIVE_VIEW_PANEL);
-
   return (
     <Epic
-      activeStory={activeViewPanel.activeView}
+      activeStory={activeView}
       tabbar={<StyledTabbar />}
     >
-      <View id="Home" activePanel={activeViewPanel.activePanel} popout={popout.popout} modal={<Modals />}>
-        <Home id="Home" />
+      <View id="Home" activePanel={activePanel} popout={popout} modal={<Modals />}>
+        <Home id="Main" />
         <Panel id="Rating">Rating</Panel>
       </View>
-      <View id="Earnings" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
-        <Earnings id="Earnings" />
+      <View id="Earnings" activePanel={activePanel} popout={popout}>
+        <Earnings id="Main" />
       </View>
-      <View id="Entertainment" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
-        <Casino id="Entertainment" />
+      <View id="Entertainment" activePanel={activePanel} popout={popout}>
+        <Casino id="Main" />
       </View>
-      <View id="Shop" activePanel={activeViewPanel.activePanel} popout={popout.popout}>
-        <Shop id="Shop" />
+      <View id="Shop" activePanel={activePanel} popout={popout}>
+        <Shop id="Main" />
       </View>
     </Epic>
   )

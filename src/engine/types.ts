@@ -1,28 +1,30 @@
-export type AppStory = Story[];
+import { ReactNode } from "react";
 
-export type Story = {
-  [key: string]: string;
-} & {
-  type?: "VIEW" | "PANEL" | undefined;
-  activeView?: string;
-  activePanel?: string;
-  activePage?: string;
-  activeModal?: string;
-  activeValue?: string;
+export type TAppHistory = {
+  [activeView: string]: TAppSector[];
 }
 
-export type TPanelView = {
-  type?: "VIEW" | "PANEL" | undefined;
+export type TAppSector = {
   activePanel: string;
-  activeView: string;
+  activePage?: string | number;
+  activeModal?: string;
+  activePopout?: ReactNode;
+}
+
+export type TAppHistoryOptions = {
+  [key: string]: any;
+} & {
+  activeView?: string;
+  activePanel?: string;
+  activePage?: string | number;
+  activeModal?: string;
+  activePopout?: ReactNode;
 }
 
 export type TSubnavigationBarSelect = {
   selected: "businesses" | "promotions" | "home" | "cars" | "clothes" | "smartphones" | "market";
   index: 0 | 1 | 2 | 3 | 4 | 5 | 6 | number;
 }
-
-export type TModals = "seeUserMore" | null;
 
 export type START_APP = {
   subscribe: boolean,
