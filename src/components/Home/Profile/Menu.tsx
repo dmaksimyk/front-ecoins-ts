@@ -14,23 +14,24 @@ import {
 } from './components';
 
 const Menu = () => {
+
   return (
     <Div style={{ paddingBottom: 6 }} className="Card__menu" >
       <MenuButton />
       <MenuCards
         img={<Icon24FavoriteOutline />}
         text='Рейтинг'
-        event={() => console.log('Рейтинг')}
+        nextPage="Rating"
       />
       <MenuCards
         img={<Icon24MoneySendOutline />}
         text='Перевод'
-        event={() => console.log('Перевод')}
+        nextPage="Transfer"
       />
       <MenuCards
         img={<Icon24CubeBoxOutline />}
         text='Инвентарь'
-        event={() => console.log('Инвентарь')}
+        nextPage="Inventory"
       />
     </Div>
   )

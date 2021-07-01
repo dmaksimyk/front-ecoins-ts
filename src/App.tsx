@@ -15,14 +15,17 @@ import {
 import {
   View,
   Epic,
-  Panel,
 } from '@vkontakte/vkui'
 
 import {
   Home,
+  Rating,
   Shop,
   Casino,
   Earnings,
+  Inventory,
+  Transfer,
+  Settings,
 } from 'panels'
 
 import {
@@ -60,7 +63,10 @@ const App = () => {
     >
       <View id="Home" activePanel={activePanel} popout={popout} modal={<Modals />}>
         <Home id="Main" />
-        <Panel id="Rating">Rating</Panel>
+        <Rating id="Rating" />
+        <Transfer id="Transfer" />
+        <Inventory id="Inventory" />
+        <Settings id="Settings" />
       </View>
       <View id="Earnings" activePanel={activePanel} popout={popout}>
         <Earnings id="Main" />

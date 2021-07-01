@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useNavigation } from "engine";
 
 import {
   Button,
@@ -8,15 +9,17 @@ import {
 type TProps = {
   img: ReactNode;
   text: string;
-  event: Function;
+  nextPage: 'Rating' | 'Transfer' | 'Inventory';
 }
 
-const MenuCards = ({ img, text, event }: TProps) => {
+const MenuCards = ({ img, text, nextPage }: TProps) => {
+  const history = useNavigation();
+
   return (
     <Button
       className="MenuСards-container__card"
       mode="tertiary" 
-      onClick={() => event()}
+      onClick={() => history.nextPage({ activePanel: nextPage })}
     >
       <div className="MenuСards-container__card-img">{img}</div>
       <Text

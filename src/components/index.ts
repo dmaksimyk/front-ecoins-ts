@@ -14,12 +14,18 @@ export { default as FirstLoader } from './Loaders/FirstLoader/index';
 // modals
 export { default as Modals } from './Modals';
 
+/* home */
 // profile
-export { default as Menu } from './Profile/Menu'
-export { default as User } from './Profile/User'
-export { default as Subscribe } from './Profile/Subscribe';
-export { default as SubDonut } from './Profile/Donut';
-export { default as UserMore } from './Profile/More';
+export { default as Menu } from './Home/Profile/Menu'
+export { default as User } from './Home/Profile/User'
+export { default as Subscribe } from './Home/Profile/Subscribe';
+export { default as SubDonut } from './Home/Profile/Donut';
+export { default as UserMore } from './Home/Profile/More';
+
+// rating
+export { default as RatingMe } from './Home/Rating/Me'
+export { default as RatingUsers } from './Home/Rating'
+
 
 // Earnings
 export { default as EarningsHomePage } from './Earnings/EarningsHomePage';
