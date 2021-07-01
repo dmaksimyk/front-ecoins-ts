@@ -1,4 +1,4 @@
-import { Icon16ChevronOutline, Icon16Fire } from "@vkontakte/icons";
+import { Icon16ChevronOutline } from "@vkontakte/icons";
 import { Avatar, Card, SimpleCell } from "@vkontakte/vkui";
 import {
   BALANCE,
@@ -37,14 +37,14 @@ const RatingItemUser = ({
       }}
     >
       <SimpleCell
-        onClick={() => {
-          console.log("id");
-        }}
+        onClick={() => console.log("id")}
         before={
           <Avatar size={36} shadow={false} src={type === "ME" ? myImg : img} />
         }
-        after={<Icon16ChevronOutline />}
-        description={`Баланс: ${type === "ME" ? myBalance : balance + ' ' + SYMBOLS_RUB}`}
+        after={type === "ME" ? false : <Icon16ChevronOutline />}
+        description={`Баланс: ${
+          type === "ME" ? myBalance : balance + " " + SYMBOLS_RUB
+        }`}
       >
         #{type === "ME" ? myRating : rating} | {type === "ME" ? myName : name}
       </SimpleCell>

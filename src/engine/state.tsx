@@ -34,11 +34,14 @@ export const CLIENT = atom({
   })
 });
 
+export const activeView = "Home";
+
 export const defaultActive: TAppSector = {
   activePanel: "Main",
   activePage: undefined,
   activeModal: undefined,
   activePopout: undefined,
+  ignoreBack: false,
 }
 
 const mapHistory = new Map<string, TAppSector[]>();
@@ -49,7 +52,7 @@ mapHistory
   .set("Shop", [defaultActive])
 
 // Глобальные переменные
-export const ACTIVE_VIEW = atom<string>({ key: "active_view", default: "Home" });
+export const ACTIVE_VIEW = atom<string>({ key: "active_view", default: activeView });
 export const ACTIVE_PANEL = atom<string>({ key: "active_panel", default: defaultActive.activePanel });
 export const ACTIVE_PAGE = atom<string | number | undefined>({ key: "active_page", default: defaultActive.activePage });
 export const ACTIVE_MODAL = atom<string | undefined>({ key: "active_modal", default: defaultActive.activeModal });

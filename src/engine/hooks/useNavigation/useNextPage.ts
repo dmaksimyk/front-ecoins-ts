@@ -18,7 +18,7 @@ const useNextPage = () => {
     const [getModal, setModal] = useCallbackState(ACTIVE_MODAL);
     const [getPopout, setPopout] = useCallbackState(ACTIVE_POPOUT);
 
-    const nextPage = async (options: TAppHistoryOptions) => {
+    const nextPage = async (options: TAppHistoryOptions, ignoreBack: boolean = false) => {
         const activeHistory = await getHistory();
         const activeView = await getView();
         const activePanel = await getPanel();
@@ -43,10 +43,11 @@ const useNextPage = () => {
         }
 
         const newSection: TAppSector = {
-            activePanel: options.activePanel!,
-            activePage: options.activePage,
-            activeModal: options.activeModal,
-            activePopout: options.activePopout,
+            activePanel: options.activePanel || endSection.activePanel,
+            activePage: options.activePage || endSection.activePage,
+            activeModal: options.activeModal || endSection.activeModal,
+            activePopout: options.activePopout || endSection.activePopout,
+            ignoreBack: ignoreBack
         };
 
         !isEqual(newSection, endSection) &&

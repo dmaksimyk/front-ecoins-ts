@@ -14,7 +14,7 @@ const Modals = () => {
 
   return (
     <ModalRoot 
-      activeModal={activeModal}
+      activeModal={activeModal || null}
       onClose={() => history.backPage()}
     >
       <ModalPage 
