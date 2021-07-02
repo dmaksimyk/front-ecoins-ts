@@ -7,9 +7,9 @@ import './style/style.scss';
 
 import {
   ACTIVE_PANEL,
+  ACTIVE_POPOUT,
   ACTIVE_VIEW,
   PLATFORM,
-  POPOUT,
 } from 'engine/state';
 
 import {
@@ -41,7 +41,7 @@ const App = () => {
   const history = useNavigation()
   const activeView = useRecoilValue(ACTIVE_VIEW);
   const activePanel = useRecoilValue(ACTIVE_PANEL);
-  const popout = useRecoilValue(POPOUT)
+  const popout = useRecoilValue(ACTIVE_POPOUT)
 
   useEffect(() => {
     window.addEventListener('popstate', () => history.backPage());

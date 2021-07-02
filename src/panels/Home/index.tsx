@@ -35,7 +35,7 @@ const Home = ({ id }: TProps) => {
           null : <BonusIcon /> 
         }
         caption="Главная"
-        status="Ваш профиль и меню"
+        status="Ваш профиль"
       />
       <User container={<Menu />} />
       <UserMore />

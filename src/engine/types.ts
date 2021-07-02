@@ -53,4 +53,11 @@ export type TBusiness = {
   balance: number;
 }
 
+export type TRating = {
+  id: number;
+  img: string;
+  name: string;
+  balance: string;
+}
+
 export type TJob = TBusiness;

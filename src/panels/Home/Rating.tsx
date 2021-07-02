@@ -1,5 +1,6 @@
 import {
   Panel,
+  Separator
 } from '@vkontakte/vkui'
 
 import {
@@ -22,6 +23,7 @@ const Rating = ({ id }: TProps) => {
         status="Стань лучшим среди лучших!"
       />
       <RatingMe />
+      <Separator />
       <RatingUsers />
     </Panel >
   )

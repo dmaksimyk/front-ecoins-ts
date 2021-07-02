@@ -28,7 +28,7 @@ const UserMore = () => {
             padding: "0 16px",
             paddingBottom: 10
           }}
-        >Другое</Title>
+        >Предложения</Title>
         {
           (!subscribe_group && subscribe_group !== undefined) ?
             <Subscribe /> : null

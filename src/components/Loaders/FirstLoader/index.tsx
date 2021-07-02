@@ -4,9 +4,9 @@ import {
 } from "react";
 
 import {
+  ACTIVE_POPOUT,
   BALANCE,
   FIRST_LAST_NAME,
-  POPOUT,
 } from "engine/state";
 
 import {
@@ -24,7 +24,7 @@ const FirstLoader = () => {
   const [progress, setProgress] = useState<number>(0);
   const [close, setClose] = useState<string>('')
 
-  const setPopout = useSetRecoilState(POPOUT)
+  const setPopout = useSetRecoilState(ACTIVE_POPOUT)
   const firstAndLastName = useRecoilValue(FIRST_LAST_NAME)
   const balance = useRecoilValue(BALANCE)
 
