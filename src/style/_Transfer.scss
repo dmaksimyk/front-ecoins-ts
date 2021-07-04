@@ -1,0 +1,82 @@
+.TransferCheckId__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--background_content);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  & .TransferCheckId-text__container {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .TransferCheckId__container-text {
+      margin-bottom: 0;
+      font: {
+        size: 32px;
+        weight: 500;
+      }
+
+      &:last-child {
+        margin: 0;
+        margin-top: 8px;
+        font-size: 12px;
+        background: var(--button_tertiary_foreground);
+        color: white;
+        border-radius: 6px;
+        padding: 2px 6px;
+
+        &::before {
+          content: "Комиссия "
+        }
+
+        &::after {
+          content: "%";
+        }
+      }
+
+      &:first-child {
+        &:after {
+          content: "₽";
+          font: {
+            size: 24px;
+            weight: 400;
+          }
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  & .TransferCheckId {
+    position: absolute;
+    bottom: calc(var(--tabbar_height) + 12px + var(--safe-area-inset-bottom));
+    height: 50%;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    & .TransferCheckId-btns__container {
+      display: flex;
+      justify-content: center;
+      width: calc(100% - 12px);
+      height: calc(100% / 4);
+
+      & .Button {
+        margin: 8px;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+        max-width: calc((100% / 3) - 16px);
+      }
+    }
+  }
+}

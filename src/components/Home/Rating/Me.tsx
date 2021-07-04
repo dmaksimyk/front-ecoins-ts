@@ -22,6 +22,7 @@ const Me = () => {
         }}
       >
         <User
+          disabled={true}
           id={id}
           img={img}
           balance={balance || "1 тыс."}

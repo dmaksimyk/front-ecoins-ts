@@ -9,11 +9,35 @@ import {
   TAppSector,
   TSubnavigationBarSelect,
   TRating,
+  THelpBridge,
 } from "engine/types";
 
 import "moment/locale/ru";
 import moment from "moment";
+import bridge from "@vkontakte/vk-bridge";
 moment.locale("ru");
+
+let timer: any = undefined;
+let mapping: Map<string, string> = new Map();
+
+const sendToVKStorage = (key: THelpBridge, value: any) => {
+  mapping.set(key, `${value || ""}`);
+  window.clearTimeout(timer);
+  timer = window.setTimeout(() => {
+    let array = [...mapping.keys()];
+    bridge.send("VKWebAppStorageGet", { keys: array }).then((data) => {
+      data.keys.forEach((item) => {
+        let param = mapping.get(item.key);
+        param !== item.value &&
+          bridge.send("VKWebAppStorageSet", {
+            key: item.key,
+            value: `${param}`,
+          });
+        mapping.delete(item.key);
+      });
+    });
+  }, 5000);
+};
 
 const url = new URL(window.location.href);
 const token = Buffer.from(url.search.slice(1))
@@ -124,6 +148,10 @@ export const MY_JOB = atom<TJob>({
   default: { name: undefined, balance: 0 },
 });
 export const MY_RATING = atom<number>({ key: "my_rating", default: 1000 });
+
+// Подсказки
+export const RATING_HELP = atom<"false" | "true">({ key: "rating_help", default: "false", effects_UNSTABLE: [({ onSet }) => onSet(string => sendToVKStorage("settingRatingHelp", string))] });
+export const TRANSFER_HELP = atom<"false" | "true">({ key: "transfer_help", default: "false", effects_UNSTABLE: [({ onSet }) => onSet(string => sendToVKStorage("settingTransferHelp", string))] });
 
 // Пользователь - Интерфейс
 export const BLOCKED = atom<boolean>({ key: "blocked", default: false });

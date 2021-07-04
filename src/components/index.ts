@@ -1,4 +1,6 @@
 // custom ui
+export { default as AlertOk } from './Rest/Alerts/AlertOk'
+export { default as Help } from './Rest/Help'
 export { default as Avatar } from './Rest/Avatar'
 export { default as CardMyBalance } from './Rest/CardMyBalance';
 export { default as ArrowBackPage } from './Rest/ArrowBackPage'
@@ -26,6 +28,8 @@ export { default as UserMore } from './Home/Profile/More';
 export { default as RatingMe } from './Home/Rating/Me'
 export { default as RatingUsers } from './Home/Rating'
 
+// transfer
+export * from './Home/Transfers'
 
 // Earnings
 export { default as EarningsHomePage } from './Earnings/EarningsHomePage';

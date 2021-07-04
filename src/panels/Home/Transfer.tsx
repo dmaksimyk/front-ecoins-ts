@@ -6,6 +6,7 @@ import {
   StyledPanelHeader,
   ArrowBackPage
 } from 'components'
+import { TransferId } from 'components'
 
 type TProps = {
   id: string;
@@ -17,9 +18,10 @@ const Transfer = ({ id }: TProps) => {
       <StyledPanelHeader
         left={<ArrowBackPage />}
         caption="Переводы"
-        status="5% комиссии =)"
+        status="Введите сумму перевода"
         separator={false}
       />
+      <TransferId />
     </Panel >
   )
 }

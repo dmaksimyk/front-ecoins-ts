@@ -15,8 +15,9 @@ const RatingItemUser = ({
   name,
   position,
   balance,
+  disabled,
   chevron = true,
-}: TRating & { chevron?: boolean; position: number }) => {
+}: TRating & { disabled?: boolean, chevron?: boolean; position: number }) => {
   const style = {
     position: "absolute",
     bottom: -1,
@@ -28,6 +29,7 @@ const RatingItemUser = ({
   if (position < 1) return <> </>;
   return (
     <SimpleCell
+      disabled={disabled}
       onClick={() => console.log(id)}
       before={
         <Avatar

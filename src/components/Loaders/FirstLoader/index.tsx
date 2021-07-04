@@ -1,61 +1,50 @@
-import {
-  useEffect,
-  useState
-} from "react";
+import { useEffect, useState } from "react";
 
-import {
-  ACTIVE_POPOUT,
-  BALANCE,
-  FIRST_LAST_NAME,
-} from "engine/state";
+import { ACTIVE_POPOUT, BALANCE, FIRST_LAST_NAME } from "engine/state";
 
-import {
-  useRecoilValue,
-  useSetRecoilState
-} from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import {
-  FLoaderAdvice,
-  FLoaderAnimation,
-  FLoaderHeader,
-} from './components'
+import { FLoaderAdvice, FLoaderAnimation, FLoaderHeader } from "./components";
+import { useNavigation } from "engine";
 
 const FirstLoader = () => {
   const [progress, setProgress] = useState<number>(0);
-  const [close, setClose] = useState<string>('')
+  const [close, setClose] = useState<string>("");
 
-  const setPopout = useSetRecoilState(ACTIVE_POPOUT)
-  const firstAndLastName = useRecoilValue(FIRST_LAST_NAME)
-  const balance = useRecoilValue(BALANCE)
+  const nav = useNavigation();
+  const setPopout = useSetRecoilState(ACTIVE_POPOUT);
+  const firstAndLastName = useRecoilValue(FIRST_LAST_NAME);
+  const balance = useRecoilValue(BALANCE);
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => setClose('FirstLoader--close'), 2700)
-      setTimeout(() => setPopout(undefined), 3000)
+      setTimeout(() => setClose("FirstLoader--close"), 2700);
+      setTimeout(() => nav.backPage(true, true), 3000);
     }
-  }, [progress, setPopout])
-
-  useEffect(() => {
-    if (progress < 100 && balance) setProgress(progress + 50)
     // eslint-disable-next-line
-  }, [balance, setProgress])
+  }, [progress, setPopout]);
 
   useEffect(() => {
-    if (progress < 100 && firstAndLastName) setProgress(progress + 50)
+    if (progress < 100 && balance) setProgress(progress + 50);
     // eslint-disable-next-line
-  }, [firstAndLastName, setProgress])
+  }, [balance, setProgress]);
 
   useEffect(() => {
-    return () => setProgress(0)
-  }, [setProgress])
+    if (progress < 100 && firstAndLastName) setProgress(progress + 50);
+    // eslint-disable-next-line
+  }, [firstAndLastName, setProgress]);
+
+  useEffect(() => {
+    return () => setProgress(0);
+  }, [setProgress]);
 
   return (
     <div className={`FirstLoader ${close}`}>
       <div className="FirstLoader--bg">
         <div
           style={{
-            height: 'var(--panelheader_height_android)',
-            paddingTop: 'var(--safe-area-inset-top)'
+            height: "var(--panelheader_height_android)",
+            paddingTop: "var(--safe-area-inset-top)",
           }}
         ></div>
         <FLoaderHeader />
@@ -63,8 +52,8 @@ const FirstLoader = () => {
         <FLoaderAdvice />
       </div>
     </div>
-  )
-}
+  );
+};
 
-(FirstLoader as any).type = "FirstLoader"
+(FirstLoader as any).type = "FirstLoader";
 export default FirstLoader;

@@ -1,0 +1,1 @@
+export {default as TransferId} from './panels/id'

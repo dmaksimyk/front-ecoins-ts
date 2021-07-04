@@ -60,4 +60,6 @@ export type TRating = {
   balance: string;
 }
 
+export type THelpBridge = "settingRatingHelp" | "settingTransferHelp"
+
 export type TJob = TBusiness;
