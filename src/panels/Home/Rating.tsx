@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Panel, Separator } from "@vkontakte/vkui";
 
 import {
@@ -6,9 +7,7 @@ import {
   RatingMe,
   RatingUsers,
   Help,
-  AlertOk,
 } from "components";
-import { useEffect, useState } from "react";
 
 type TProps = {
   id: string;
@@ -24,6 +23,7 @@ const Rating = ({ id }: TProps) => {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
