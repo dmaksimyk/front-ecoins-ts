@@ -1,16 +1,12 @@
-@import 
-"@vkontakte/vkui/dist/vkui.css",
-"./Loaders/Index",
-"./Profile/Index", 
-"./Roll", 
-"./Random", 
-"./Logs",
-"./Transfer";
+@import "@vkontakte/vkui/dist/vkui.css", "./Loaders/Index", "./Home/Index",
+  "./Roll", "./Random", "./Logs";
 
 // dev
 ::-webkit-scrollbar {
   width: 0;
 }
+
+// prod
 
 .Header__content {
   -webkit-touch-callout: none;
@@ -20,9 +16,6 @@
   -ms-user-select: none;
   user-select: none;
 }
-
-
-// prod
 
 .dell-select {
   -webkit-touch-callout: none;
@@ -43,14 +36,5 @@
     & * {
       cursor: pointer;
     }
-  }
-}
-
-.TransferUser-container__button {
-  border-radius: 10000px;
-  padding: 0;
-
-  & .vkuiButton__content {
-    padding: 0;
   }
 }

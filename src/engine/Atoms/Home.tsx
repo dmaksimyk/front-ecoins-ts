@@ -67,5 +67,17 @@ export const TRANSFERS_FAST_TRANSFER = atom<any[]>({
       id: 5646532,
       img: "https://sun9-49.userapi.com/impg/CsogpVhyUBJVJ156fKSdM1NDKRoGuGl6ZJ87Qg/B3sgtu-yUYA.jpg?size=607x1080&quality=96&sign=9e9992d6e21d5984fdb5205ab9889c5f&type=album",
     },
+    {
+      id: 5646532,
+      img: "https://sun9-49.userapi.com/impg/CsogpVhyUBJVJ156fKSdM1NDKRoGuGl6ZJ87Qg/B3sgtu-yUYA.jpg?size=607x1080&quality=96&sign=9e9992d6e21d5984fdb5205ab9889c5f&type=album",
+    },
+    {
+      id: 5646532,
+      img: "https://sun9-49.userapi.com/impg/CsogpVhyUBJVJ156fKSdM1NDKRoGuGl6ZJ87Qg/B3sgtu-yUYA.jpg?size=607x1080&quality=96&sign=9e9992d6e21d5984fdb5205ab9889c5f&type=album",
+    },
+    {
+      id: 5646532,
+      img: "https://sun9-49.userapi.com/impg/CsogpVhyUBJVJ156fKSdM1NDKRoGuGl6ZJ87Qg/B3sgtu-yUYA.jpg?size=607x1080&quality=96&sign=9e9992d6e21d5984fdb5205ab9889c5f&type=album",
+    },
   ],
 });

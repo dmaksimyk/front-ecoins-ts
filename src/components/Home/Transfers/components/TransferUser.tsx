@@ -2,21 +2,30 @@ import { Avatar, Button } from "@vkontakte/vkui";
 import { ReactNode } from "react";
 
 const TransferUser = ({ img }: { img: string | ReactNode }) => {
-  const marginAndBorderRadius: any = {marginTop: 12, borderRadius: 10000, marginRight: 8}
-  
+  const marginAndBorderRadius: any = {
+    width: 48,
+    height: 48,
+    borderRadius: 10000,
+  };
+
   if (typeof img !== "string") {
     return (
-      <Button mode="outline" style={{ ...marginAndBorderRadius }}>
+      <Button
+        mode="outline"
+        className="TransferUser-btn__margin"
+        style={{ ...marginAndBorderRadius }}
+      >
         {img}
       </Button>
     );
   } else {
     return (
-      <Button mode="outline" className="TransferUser-container__button" style={marginAndBorderRadius }>
-        <Avatar
-          style={{ objectFit: "cover" }}
-          src={img as string}
-        />
+      <Button
+        mode="outline"
+        className="TransferUser-container__button TransferUser-btn__margin"
+        style={marginAndBorderRadius}
+      >
+        <Avatar style={{ objectFit: "cover" }} src={img as string} />
       </Button>
     );
   }

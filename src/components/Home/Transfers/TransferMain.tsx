@@ -1,11 +1,10 @@
 import { Gallery } from "@vkontakte/vkui";
-// import { TransferId } from ".";
-import TransferHome from "./panels/home";
+import { TransferHome } from ".";
 
 const TransferMain = () => {
   return (
     <>
-      <Gallery slideIndex={0} style={{ height: 'inherit', width: '100vh' }}>
+      <Gallery slideIndex={0} style={{ height: "inherit", width: "100vh" }}>
         <TransferHome />
       </Gallery>
     </>

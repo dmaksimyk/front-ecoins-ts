@@ -7,6 +7,7 @@ export { default as ArrowBackPage } from './Rest/ArrowBackPage'
 export { default as StyledPanelHeader } from './Rest/StyledPanelHeader';
 export { default as BonusIcon } from './Rest/BonusIcon';
 export { default as StyledTabbar } from './Rest/StyledTabbar';
+export { default as Header } from './Rest/Header';
 
 // loaders
 export { default as Loader } from './Loaders/Loader' 

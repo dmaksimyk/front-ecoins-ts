@@ -1,52 +1,43 @@
 import { useRecoilValue } from "recoil";
 import bridge from "@vkontakte/vk-bridge";
 
-import {
-  Icon16UserAdd,
-  Icon16ChevronOutline
-} from "@vkontakte/icons";
+import { Icon16UserAdd, Icon16ChevronOutline } from "@vkontakte/icons";
 
-import {
-  Card,
-  Div,
-  SimpleCell,
-  Avatar
-} from "@vkontakte/vkui";
+import { Card, Div, SimpleCell, Avatar } from "@vkontakte/vkui";
 
-import {
-  CLIENT,
-  SUBSCRIBE_GROUP,
-  SYMBOLS_RUB
-} from "engine/state";
+import { CLIENT, SUBSCRIBE_GROUP, SYMBOLS_RUB } from "engine/state";
 
 const Subscribe = () => {
-  const client = useRecoilValue(CLIENT)
-  const subscribe_group = useRecoilValue(SUBSCRIBE_GROUP)
+  const client = useRecoilValue(CLIENT);
+  const subscribe_group = useRecoilValue(SUBSCRIBE_GROUP);
 
   return (
     <Div style={{ paddingTop: 0 }}>
-      <Card
-        mode="shadow"
-        className="Subscribe-card"
-      >
+      <Card mode="shadow" className="Subscribe-card">
         <SimpleCell
           onClick={() => {
             if (!subscribe_group && subscribe_group !== undefined) {
-              bridge.send("VKWebAppJoinGroup", {
-                "group_id": 204463745
-              })
+              bridge
+                .send("VKWebAppJoinGroup", {
+                  group_id: 204463745,
+                })
                 .then((data: any) => {
                   if (data.result) {
-                    console.log("result:", data.result)
-                    client.emit('SUBSCRIBE_GROUP')
+                    console.log("result:", data.result);
+                    client.emit("SUBSCRIBE_GROUP");
                   }
                 })
-                .catch((err) => console.log("Подписка на группу:", "пользователь отменил подписку"))
-            } else console.log('err')
+                .catch((err) =>
+                  console.log(
+                    "Подписка на группу:",
+                    "пользователь отменил подписку"
+                  )
+                );
+            } else console.log("err");
           }}
           before={
             <Avatar
-              style={{ background: 'var(--dynamic_green)' }}
+              style={{ background: "var(--dynamic_green)" }}
               size={28}
               shadow={false}
             >
@@ -60,7 +51,7 @@ const Subscribe = () => {
         </SimpleCell>
       </Card>
     </Div>
-  )
-}
+  );
+};
 
 export default Subscribe;
