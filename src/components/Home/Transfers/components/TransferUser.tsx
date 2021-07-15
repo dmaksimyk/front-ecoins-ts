@@ -1,33 +1,18 @@
-import { Avatar, Button } from "@vkontakte/vkui";
+import { Avatar } from "components";
+import Image from "./Image";
 import { ReactNode } from "react";
 
 const TransferUser = ({ img }: { img: string | ReactNode }) => {
-  const marginAndBorderRadius: any = {
-    width: 48,
-    height: 48,
-    borderRadius: 10000,
-  };
-
-  if (typeof img !== "string") {
+  if (typeof img !== "string")
     return (
-      <Button
-        mode="outline"
-        className="TransferUser-btn__margin"
-        style={{ ...marginAndBorderRadius }}
-      >
-        {img}
-      </Button>
+      <div className="TransferUser-btn__margin TransferUser-btn__active">
+        <Image>{img}</Image>
+      </div>
     );
-  } else {
-    return (
-      <Button
-        mode="outline"
-        className="TransferUser-container__button TransferUser-btn__margin"
-        style={marginAndBorderRadius}
-      >
-        <Avatar style={{ objectFit: "cover" }} src={img as string} />
-      </Button>
-    );
-  }
+  return (
+    <div className="TransferUser-btn__margin TransferUser-btns__border">
+      <Avatar size={48} img={img} styling={{ borderRadius: 10000 }} />
+    </div>
+  );
 };
 export default TransferUser;

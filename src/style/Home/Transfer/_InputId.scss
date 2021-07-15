@@ -1,0 +1,10 @@
+.InputId__FormItem {
+  padding: 0;
+}
+
+.TransferBalance__FormItem {
+  padding: 0;
+  & * {
+    padding: 0;
+  }
+}

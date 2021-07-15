@@ -32,43 +32,43 @@ const useClient = () => {
   const setShop = useSetRecoilState(state.SHOP);
 
   useEffect(() => {
-    screenMount().then((data: boolean) => {
-      if (!data) {
-        console.log("loaded not mounted");
-        navigation.nextPage({
-          activePopout: <FirstLoader />,
-          ignoreBack: true,
-        });
-        setScreenMount(true);
-      } else console.log("loaded mounted");
-    });
+    // screenMount().then((data: boolean) => {
+    //   if (!data) {
+    //     console.log("loaded not mounted");
+    //     navigation.nextPage({
+    //       activePopout: <FirstLoader />,
+    //       ignoreBack: true,
+    //     });
+    //     setScreenMount(true);
+    //   } else console.log("loaded mounted");
+    // });
 
-    client.on("connect", () =>
-      bridge.send("VKWebAppGetUserInfo").then((data) => {
-        setName(`${data.first_name} ${data.last_name}`);
-        setId(data.id);
-        setImg(data.photo_200);
+    // client.on("connect", () =>
+    //   bridge.send("VKWebAppGetUserInfo").then((data) => {
+    //     setName(`${data.first_name} ${data.last_name}`);
+    //     setId(data.id);
+    //     setImg(data.photo_200);
 
-        popout().then((data) => {
-          (data as any)?.type?.type !== "FirstLoader" &&
-            data &&
-            navigation.backPage(true, true);
-        });
-      })
-    );
+    //     popout().then((data) => {
+    //       (data as any)?.type?.type !== "FirstLoader" &&
+    //         data &&
+    //         navigation.backPage(true, true);
+    //     });
+    //   })
+    // );
 
-    client.on("connect_error", () =>
-      navigation.nextPage({
-        activePopout: <ClientConnector />,
-        ignoreBack: true,
-      })
-    );
-    client.on("disabled", () =>
-      navigation.nextPage({
-        activePopout: <ClientConnector />,
-        ignoreBack: true,
-      })
-    );
+    // client.on("connect_error", () =>
+    //   navigation.nextPage({
+    //     activePopout: <ClientConnector />,
+    //     ignoreBack: true,
+    //   })
+    // );
+    // client.on("disabled", () =>
+    //   navigation.nextPage({
+    //     activePopout: <ClientConnector />,
+    //     ignoreBack: true,
+    //   })
+    // );
 
     client.on("START_APP", (data: START_APP) => {
       setSubscribeGroup(data.subscribe);

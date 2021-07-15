@@ -1,16 +1,67 @@
-.TransferUser-btn__margin {
-  margin-right: 6px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
 .TransferUser-container__button {
   border-radius: 10000px;
   padding: 0;
 
   & .vkuiButton__content {
     padding: 0;
+  }
+
+  & .TransferUser-container__avatar {
+    box-sizing: border-box;
+    border: 1px solid orange;
+  }
+}
+
+.FastTransfer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TransferUser-btn__margin {
+  margin-right: 6px;
+}
+
+.TransferUser-btn__dell_margin {
+  display: flex;
+  & :last-child {
+    margin-right: 0px !important;
+  }
+}
+
+.TransferUser-btn__active {
+  position: relative;
+  & ::before {
+    transition: 0.12s;
+    content: "";
+    border-radius: 10000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(97, 97, 97, 0.2);
+    opacity: 0;
+  }
+
+  & :active {
+    & :before {
+      opacity: 1;
+    }
+  }
+}
+
+.TransferUser-btns__border {
+  position: relative;
+  border-radius: 100000px;
+  &:before {
+    content: "";
+    border-radius: 100000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--button_outline_foreground);
   }
 }
