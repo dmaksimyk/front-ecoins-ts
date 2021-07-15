@@ -6,14 +6,13 @@ const BonusIcon = () => {
     <Icon28GiftOutline
       className="gift-per-watch-video"
       onClick={() => {
-        (bridge as any).send("VKWebAppShowNativeAds", {
-          ad_format: "reward"
-        })
-          .then((data: any) => console.log(data))
-          .catch((error: any) => console.log(error));
+        bridge
+          .send("VKWebAppShowNativeAds", { ad_format: "reward" })
+          .then((data) => console.log(data.result))
+          .catch((error) => console.log(error));
       }}
     />
-  )
-}
+  );
+};
 
 export default BonusIcon;

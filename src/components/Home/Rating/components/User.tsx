@@ -8,6 +8,7 @@ import {
   Icon202CircleFillSilver,
   Icon203CircleFillBronze,
 } from "@vkontakte/icons";
+import { action } from "engine";
 
 const RatingItemUser = ({
   id,
@@ -17,7 +18,7 @@ const RatingItemUser = ({
   balance,
   disabled,
   chevron = true,
-}: TRating & { disabled?: boolean, chevron?: boolean; position: number }) => {
+}: TRating & { disabled?: boolean; chevron?: boolean; position: number }) => {
   const style = {
     position: "absolute",
     bottom: -1,
@@ -30,7 +31,7 @@ const RatingItemUser = ({
   return (
     <SimpleCell
       disabled={disabled}
-      onClick={() => console.log(id)}
+      onClick={() => action().openVkUser(id)}
       before={
         <Avatar
           size={36}
