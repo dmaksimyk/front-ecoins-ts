@@ -1,16 +1,44 @@
 import { RichCell, Avatar } from "@vkontakte/vkui";
 import { Icon20MoneyTransferOutline } from "@vkontakte/icons";
-import { SYMBOLS_RUB } from "engine/state";
+import { SYMBOLS_RUB, USER_TOKEN } from "engine/state";
+import bridge from "@vkontakte/vk-bridge";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
 
 const RichCellStyled = ({
   operation,
   value,
-  caption,
+  id,
 }: {
-  operation: "SEND" | "ADD";
+  operation: "SEND" | "ME";
   value: string;
-  caption: string;
+  id: number;
 }) => {
+  const [name, setName] = useState<string>("");
+  const userToken = useRecoilValue(USER_TOKEN);
+
+  useEffect(() => {
+    if (id) {
+      bridge
+        .send("VKWebAppCallAPIMethod", {
+          method: "users.get",
+          params: {
+            user_ids: `${id}`,
+            v: "5.131",
+            access_token: userToken,
+          },
+        })
+        .then((data) => {
+          let getName =
+            data.response[0].first_name !== "DELETED"
+              ? `${data.response[0].first_name} ${data.response[0].last_name}`
+              : "";
+          setName(getName);
+        })
+        .catch(() => setName(""));
+    }
+  });
   return (
     <>
       <RichCell
@@ -28,10 +56,12 @@ const RichCellStyled = ({
             <Icon20MoneyTransferOutline fill="var(--white)" />
           </Avatar>
         }
-        caption={`${operation === "SEND" ? "Получатель" : "Отправитель"}: ${caption}`}
-        after={`${operation === "SEND" ? "-" : "+"} ${value} ${SYMBOLS_RUB}`}
+        caption={`${operation === "SEND" ? "Получатель" : "Отправитель"}: ${
+          name === "" ? "Человек" : name
+        }`}
+        after={`${operation === "SEND" ? "-" : "+"}${value} ${SYMBOLS_RUB}`}
       >
-        {operation === "SEND" ? 'Вы перевели' : 'Вам перевод'}
+        {operation === "SEND" ? "Вы перевели" : "Вам перевод"}
       </RichCell>
     </>
   );

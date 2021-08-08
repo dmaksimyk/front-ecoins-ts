@@ -56,16 +56,22 @@ export const RATING = atom<TRating[]>({
 });
 
 // Переводы
-export const TRANSFER_PANEL = atom<0 | 1>({
-  key: "TRANSFER_PANEL",
-  default: 0,
-})
+export const TRANSFER_NAME = atom<string>({
+  key: "transfer_name",
+  default: "",
+});
+
 export const TRANSFER_ID = atom<number | undefined>({
-  key: "TRANSFER_ID",
+  key: "transfer_id",
   default: undefined,
 });
 
 export const TRANSFER_VALUE = atom<number | undefined>({
-  key: "TRANSFER_VALUE",
+  key: "transfer_value",
   default: undefined,
+});
+
+export const TRANSFER_LOG = atom<{ id: number; amount: string, type: 'SEND' | 'ME'}[] | []>({
+  key: "transfer_value",
+  default: [],
 });

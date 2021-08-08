@@ -1,40 +1,38 @@
-import { FormItem, IconButton, Input } from "@vkontakte/vkui";
+import { IconButton, Input } from "@vkontakte/vkui";
 import { Icon24ArrowRightOutline } from "@vkontakte/icons";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { TRANSFER_ID, TRANSFER_PANEL } from "engine/state";
+import { TRANSFER_ID } from "engine/state";
+import useAction from "engine/hooks/useAction";
+import { useNavigation } from "engine";
 
 const InputId = () => {
-  const setNextPanel = useSetRecoilState(TRANSFER_PANEL);
+  const navigation = useNavigation()
+  const action = useAction();
   const setId = useSetRecoilState(TRANSFER_ID);
+
+  const refInput = useRef(null);
 
   const [value, setValue] = useState<string | number>("");
   const [disabled, setDisabled] = useState<boolean>(false);
 
   const nextPage = () => {
-    let field: any = document.getElementById("InputId__input");
-    field.blur();
-    setNextPanel(1);
-    setId(Number(value));
+    const field: any = refInput.current;
+    if (field) {
+      field.blur();
+      navigation.nextPage({activeModal: 'nextTransfer'})
+      setId(Number(value));
+    }
   };
 
-  const changeInput = (e: any) => {
-    const inputValue = e.target.value;
-    const num = 9999999999999999;
-    setDisabled(false);
+  const changeInput = async (e: any) => {
+    const cropNumber = await action.getNumbers(/[0-9]/, e.target.value, 12);
 
-    if (!+inputValue || +inputValue < 1) {
-      setDisabled(false);
-      return setValue("");
+    if (+cropNumber.number || cropNumber.number === "") {
+      setValue(cropNumber.number);
+      return setDisabled(cropNumber.status);
     }
-
-    if (+inputValue > num) {
-      setDisabled(true);
-      return setValue(num);
-    }
-
-    setDisabled(true);
-    setValue(Math.ceil(Number(inputValue.slice(0, 16))));
+    return setDisabled(false);
   };
 
   const keyPress = (e: any) => {
@@ -44,26 +42,23 @@ const InputId = () => {
   };
 
   return (
-    <div style={{ marginTop: 16 }}>
-      <FormItem className="InputId__FormItem" top="Перевод">
-        <Input
-          id="InputId__input"
-          onChange={(e) => changeInput(e)}
-          onKeyPress={(e) => keyPress(e)}
-          after={
-            <IconButton
-              disabled={!disabled}
-              onClick={() => nextPage()}
-              activeMode="opacity"
-            >
-              <Icon24ArrowRightOutline />
-            </IconButton>
-          }
-          placeholder="ID пользователя"
-          value={value}
-        />
-      </FormItem>
-    </div>
+    <Input
+      id="InputId__input"
+      getRef={refInput}
+      onChange={(e) => changeInput(e)}
+      onKeyPress={(e) => keyPress(e)}
+      after={
+        <IconButton
+          disabled={!disabled}
+          onClick={() => nextPage()}
+          activeMode="opacity"
+        >
+          <Icon24ArrowRightOutline />
+        </IconButton>
+      }
+      placeholder="ID пользователя"
+      value={value}
+    />
   );
 };
 

@@ -8,11 +8,13 @@ const TransferBalance = () => {
   return (
     <Div style={{ paddingBottom: 8 }}>
       <FormItem className="TransferBalance__FormItem" top="Баланс">
-        <Title weight="regular" style={{padding: 0}} level="1">
+        <Title weight="regular" style={{ padding: 0 }} level="1">
           {balance}
         </Title>
       </FormItem>
-      <InputId />
+      <FormItem className="TransferBalance-FormItem__input" top="Перевод">
+        <InputId />
+      </FormItem>
     </Div>
   );
 };

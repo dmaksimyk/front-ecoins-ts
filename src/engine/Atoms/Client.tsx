@@ -29,3 +29,4 @@ export const CLIENT = atom({
 });
 
 export const TOKEN = atom({ key: "token", default: token });
+export const USER_TOKEN = atom({ key: "user_token", default: "" });

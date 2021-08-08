@@ -4,25 +4,23 @@ import { ACTIVE_MODAL } from "engine/state";
 import { useRecoilValue } from "recoil";
 import { InformationUser } from "./components";
 
-import {
-  ModalPage
-} from "./Modals";
+import { ModalPage, ModalPageNextTransfer } from "./Modals";
 
 const Modals = () => {
-  const activeModal = useRecoilValue(ACTIVE_MODAL)
-  const history = useNavigation()
+  const activeModal = useRecoilValue(ACTIVE_MODAL);
+  const history = useNavigation();
 
   return (
-    <ModalRoot 
+    <ModalRoot
       activeModal={activeModal || null}
       onClose={() => history.backPage()}
     >
-      <ModalPage 
-        id="seeUserMore"
-        header="Подробная информация"
-      ><InformationUser/></ModalPage>
+      <ModalPage id="seeUserMore" header="Подробная информация">
+        <InformationUser />
+      </ModalPage>
+      <ModalPageNextTransfer id="nextTransfer" header="Перевод" />
     </ModalRoot>
-  )
-}
+  );
+};
 
 export default Modals;
