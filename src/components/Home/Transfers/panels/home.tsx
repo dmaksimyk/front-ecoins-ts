@@ -9,7 +9,6 @@ const TransferHome = () => {
     <div style={{ width: "100vw" }}>
       <TransferBalance />
       <Separator style={sep as any} />
-      <Header>История</Header>
       <TransferLog />
     </div>
   );

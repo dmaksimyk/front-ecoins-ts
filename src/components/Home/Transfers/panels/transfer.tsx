@@ -8,7 +8,7 @@ import bridge from "@vkontakte/vk-bridge";
 
 const Transfer = () => {
   // eslint-disable-next-line
-  const [name, setName] = useState<string>("123");
+  const [name, setName] = useState<string>("");
   const setGlobalName = useSetRecoilState(TRANSFER_NAME);
   const userToken = useRecoilValue(USER_TOKEN);
   const id = useRecoilValue(TRANSFER_ID);

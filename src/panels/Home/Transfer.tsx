@@ -31,7 +31,6 @@ const Transfer = ({ id }: TProps) => {
         left={<ArrowBackPage />}
         caption="Переводы"
         status="Введите сумму перевода"
-        separator={false}
       />
       <TransferMain />
     </Panel>

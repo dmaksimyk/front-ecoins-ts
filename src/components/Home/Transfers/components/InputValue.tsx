@@ -1,8 +1,13 @@
 import { Button, Div, IconButton, Input, Separator } from "@vkontakte/vkui";
-import { Icon24Cancel, Icon24MoneySendOutline } from "@vkontakte/icons";
+import { Icon24Cancel } from "@vkontakte/icons";
 import { useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { SYMBOLS_RUB, TRANSFER_ID, TRANSFER_NAME } from "engine/state";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+  SYMBOLS_RUB,
+  TRANSFER_ID,
+  TRANSFER_LOG,
+  TRANSFER_NAME,
+} from "engine/state";
 import useAction from "engine/hooks/useAction";
 import { useNavigation } from "engine";
 
@@ -11,17 +16,19 @@ const InputValue = () => {
   const navigation = useNavigation();
   const name = useRecoilValue(TRANSFER_NAME);
   const user_id = useRecoilValue(TRANSFER_ID);
+  const [log, setLog] = useRecoilState(TRANSFER_LOG);
 
   const refInput = useRef(null);
 
-  const [value, setValue] = useState<string | number>("");
+  const [value, setValue] = useState<number | "">("");
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  const confirmTransfer = () => {
+  const confirmTransfer = async () => {
     const field: any = refInput.current;
     if (field) {
+      const arr = await action.setTransferLog(user_id || 1, value, "SEND", log);
       field.blur();
-      action.setTransferLog(user_id || 1, value, "ME");
+      setLog(arr);
       navigation.backPage();
     }
   };
@@ -49,7 +56,6 @@ const InputValue = () => {
           onChange={(e) => changeInput(e)}
           onKeyPress={(e) => keyPress(e)}
           after={
-
             <IconButton
               disabled={!disabled || name === ""}
               onClick={() => setValue("")}

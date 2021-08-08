@@ -1,27 +1,22 @@
-import { useCallbackState } from "engine";
-import { TRANSFER_LOG } from "engine/state";
-
 const SetLog = async (
   id: number,
   amount: number | string,
-  type: "SEND" | "ME"
+  type: "SEND" | "ME",
+  arr: any
 ) => {
-  const [log, setLogTransfer] = useCallbackState(TRANSFER_LOG);
 
-    console.log(await log());
+  const newArr = [
+    ...[
+      {
+        id: id,
+        amount: `${amount}`,
+        type: type,
+      },
+    ],
+    ...arr,
+  ];
 
-  // const newArr = [
-  //   ...[
-  //     {
-  //       id: id,
-  //       amount: `${amount}`,
-  //       type: type,
-  //     },
-  //   ],
-  //   ...log,
-  // ];
-
-  // setLog(newArr);
+  return newArr
 };
 
 export default SetLog;
