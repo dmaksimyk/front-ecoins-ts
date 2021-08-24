@@ -1,11 +1,25 @@
 .TransferBalance__FormItem {
   padding: 0;
   & * {
+    color: var(--white) !important;
     padding: 0;
+  }
+}
+
+.CardTransferBalance__id {
+  color: var(--white) !important;
+  margin-top: 15%;
+  padding: 0;
+
+  .vkuiMiniInfoCell__after {
+    opacity: .5
+  }
+
+  span {
+    margin: 0;
   }
 }
 
 .TransferBalance-FormItem__input {
   padding: 0;
-  // margin-top: 16px;
 }

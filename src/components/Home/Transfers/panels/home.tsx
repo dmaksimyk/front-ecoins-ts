@@ -1,6 +1,4 @@
 import { Separator } from "@vkontakte/vkui";
-import { Header } from "components";
-
 import { TransferLog, TransferBalance } from "../components";
 
 const TransferHome = () => {

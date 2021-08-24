@@ -56,7 +56,7 @@ const InputId = () => {
           <Icon24ArrowRightOutline />
         </IconButton>
       }
-      placeholder="Номер счёта получателя"
+      placeholder="Номер карты получателя"
       value={value}
     />
   );

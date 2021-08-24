@@ -1,26 +1,17 @@
-import { useRecoilValue } from "recoil";
-import { FormItem, Title, Group, InfoRow, Card, Header, Div } from "@vkontakte/vkui";
-import { BALANCE, ID } from "engine/state";
+import { Group, Div, Card } from "@vkontakte/vkui";
 import InputId from "./InputId";
+import { StyledHeader } from "components";
+import { CardTransferBalance } from "./miniComponents";
 
 const TransferBalance = () => {
-  const balance = useRecoilValue(BALANCE);
-  const wallet = useRecoilValue(ID);
   return (
-    <Group header={<Header>Ваша карта</Header>}>
+    <Group header={<StyledHeader title="Карта" />}>
       <Div>
-        <Card style={{ padding: 12, marginTop: 8 }}>
-          <FormItem className="TransferBalance__FormItem" top="Баланс">
-            <Title weight="regular" style={{ padding: 0 }} level="1">
-              {balance}
-            </Title>
-          </FormItem>
-          <InfoRow style={{ marginTop: 12 }} header="Номер счёта">
-            {wallet}
-          </InfoRow>
+        <Card style={{ padding: 18, background: "var(--accent)" }}>
+          <CardTransferBalance />
         </Card>
       </Div>
-      <Group header={<Header>Переводы</Header>}>
+      <Group header={<StyledHeader title="Перевод" />}>
         <Div>
           <InputId />
         </Div>
