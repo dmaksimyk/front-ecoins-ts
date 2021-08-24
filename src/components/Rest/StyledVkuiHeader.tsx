@@ -1,5 +1,5 @@
 import { Header } from "@vkontakte/vkui";
 const StyledVkuiHeader = ({ title }: { title: string }) => (
-  <Header style={{ height: 36 }}>{title}</Header>
+  <Header>{title}</Header>
 );
 export default StyledVkuiHeader;

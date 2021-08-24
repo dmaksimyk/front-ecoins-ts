@@ -1,13 +1,14 @@
-import { Separator } from "@vkontakte/vkui";
-import { TransferLog, TransferBalance } from "../components";
+import { TransferLog, TransferBalance, TransferInput } from "../components";
+import { Spacing } from "@vkontakte/vkui";
 
 const TransferHome = () => {
-  const sep = { padding: "8px 0" };
   return (
     <div style={{ width: "100vw" }}>
       <TransferBalance />
-      <Separator style={sep as any} />
-      <TransferLog />
+      <Spacing separator="center" />
+      <div><TransferInput /></div>
+      <Spacing separator="center"/>
+      <div><TransferLog /></div>
     </div>
   );
 };
