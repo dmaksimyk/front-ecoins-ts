@@ -6,8 +6,16 @@ import { CardTransferBalance } from "./miniComponents";
 const TransferBalance = () => {
   return (
     <Group header={<StyledHeader title="Карта" />}>
-      <Div>
-        <Card style={{ padding: 18, background: "var(--accent)" }}>
+      <Div style={{ display: "flex", justifyContent: "center" }}>
+        <Card
+          style={{
+            padding: 18,
+            background: "var(--accent)",
+            width: "100%",
+            maxWidth: 340,
+            minHeight: 100,
+          }}
+        >
           <CardTransferBalance />
         </Card>
       </Div>
