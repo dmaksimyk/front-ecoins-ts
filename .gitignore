@@ -4,3 +4,5 @@ package-lock.json
 yarn.lock
 *.d.ts
 __*
+yarn-error.txt
+*.css
