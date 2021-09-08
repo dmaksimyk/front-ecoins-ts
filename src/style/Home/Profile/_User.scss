@@ -1,0 +1,16 @@
+.user {
+    & .vkuiGroup__inner {
+      padding-bottom: 0 !important;
+    }
+  
+    & .user__information {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+    }
+  
+    & .user__separator {
+      margin: 8px 0;
+    }
+  }
+  

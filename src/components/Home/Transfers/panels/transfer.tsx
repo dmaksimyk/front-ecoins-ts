@@ -3,10 +3,10 @@ import { TRANSFER_ID, TRANSFER_NAME, USER_TOKEN } from "engine/state";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { TransferHeader } from "../components";
+import { TransferHeader } from "../__components";
 import bridge from "@vkontakte/vk-bridge";
 
-const Transfer = () => {
+const Transfer: React.FC = () => {
   // eslint-disable-next-line
   const [name, setName] = useState<string>("");
   const setGlobalName = useSetRecoilState(TRANSFER_NAME);

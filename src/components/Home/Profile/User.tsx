@@ -1,27 +1,23 @@
 import { ReactNode } from "react";
-
 import { Separator, Group, Div } from "@vkontakte/vkui";
+import { UserPhoto, FirstAndLastName, Informations } from "./__components";
 
-import { Avatar, FirstAndLastName, Informations } from "./components";
-
-type Props = {
-  more?: boolean;
+const User: React.FC<{
   container: ReactNode;
-};
-
-const User = ({ container, more = true }: Props) => {
+  more?: boolean;
+}> = ({ container, more = true }) => {
   return (
     <Group className="user" style={{ paddingBottom: 0 }} separator="hide">
-      <Div className="user-container__name-and-avatar">
-        <Avatar />
+      <Div className="user__information">
+        <UserPhoto />
         <FirstAndLastName />
       </Div>
       {more ? (
         <>
           {container}
-          <Separator className="user-container__separator" />
+          <Separator className="user__separator" />
           <Informations />
-          <Separator className="user-container__separator" />
+          <Separator className="user__separator" />
         </>
       ) : null}
     </Group>

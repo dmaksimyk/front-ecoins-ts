@@ -11,13 +11,13 @@ $paddingTop: 0px;
   height: 100vh;
   backdrop-filter: blur(10px);
 
-  & .FirstLoader--bg {
+  & .FirstLoader__background {
     width: inherit;
     height: inherit;
     background: rgba(0,0,0,.5);
     color: white;
   
-    & .FirstLoader--header {
+    & .FirstLoader__header {
       width: 70%;
       max-width: 400px;
       padding: $paddingTop 32px;

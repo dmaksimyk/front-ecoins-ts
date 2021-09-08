@@ -2,7 +2,7 @@ import { useSetRecoilState, useRecoilValue } from "recoil";
 
 import * as state from "engine/state";
 import { useEffect } from "react";
-import { ClientConnector, FirstLoader } from "components";
+import { ClientConnector, FirstLoader } from "components/Loaders";
 import { START_APP, TBusiness, TTransfer, TJob } from "engine/types";
 import bridge from "@vkontakte/vk-bridge";
 import { useCallbackState, useNavigation } from "engine";

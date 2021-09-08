@@ -1,22 +1,14 @@
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue } from "recoil";
+import { Title } from "@vkontakte/vkui";
+import { DONUT, SUBSCRIBE_GROUP } from "engine/state";
 
-import {
-  Title,
-} from '@vkontakte/vkui'
+import DonutPlaceHolder from "./DonutPlaceHolder";
+import SubscribePlaceHolder from "./SubscribePlaceHolder";
 
-import {
-  Subscribe,
-  SubDonut,
-} from 'components'
 
-import {
-  DONUT,
-  SUBSCRIBE_GROUP,
-} from 'engine/state';
-
-const UserMore = () => {
-  const subscribe_group = useRecoilValue(SUBSCRIBE_GROUP)
-  const donut = useRecoilValue(DONUT)
+const UserMore: React.FC = () => {
+  const subscribe_group = useRecoilValue(SUBSCRIBE_GROUP);
+  const donut = useRecoilValue(DONUT);
 
   if ((!subscribe_group && subscribe_group !== undefined) || !donut) {
     return (
@@ -26,19 +18,20 @@ const UserMore = () => {
           level="3"
           style={{
             padding: "0 16px",
-            paddingBottom: 10
+            paddingBottom: 10,
           }}
-        >Предложения</Title>
-        {
-          (!subscribe_group && subscribe_group !== undefined) ?
-            <Subscribe /> : null
-        }
-        {(!donut) ? <SubDonut /> : null}
+        >
+          Предложения
+        </Title>
+        {!subscribe_group && subscribe_group !== undefined ? (
+          <SubscribePlaceHolder />
+        ) : null}
+        {!donut ? <DonutPlaceHolder /> : null}
       </div>
-    )
+    );
   } else {
-    return (<></>)
+    return <></>;
   }
-}
+};
 
-export default UserMore
+export default UserMore;

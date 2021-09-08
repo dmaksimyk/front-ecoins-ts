@@ -1,6 +1,7 @@
 import { Panel } from "@vkontakte/vkui";
 
-import { User, Menu, UserMore, StyledPanelHeader, BonusIcon } from "components";
+import { StyledPanelHeader, BonusIcon } from "components/UI";
+import { User, Menu, More } from "components/Home/Profile";
 
 type TProps = {
   id: string;
@@ -15,7 +16,7 @@ const Home = ({ id }: TProps) => {
         status="Ваш профиль"
       />
       <User container={<Menu />} />
-      <UserMore />
+      <More />
     </Panel>
   );
 };

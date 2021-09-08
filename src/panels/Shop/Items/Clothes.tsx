@@ -6,16 +6,14 @@
 // import {
 // } from 'engine/state';
 
-type TProps = {
+const Clothes: React.FC<{
   style: object;
-}
-
-const Clothes = ({style}: TProps) => {
+}> = ({ style }) => {
   return (
     <div style={style}>
       <p>Одежда</p>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Clothes
+export default Clothes;

@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import { Panel, Separator } from "@vkontakte/vkui";
+import { Panel, PanelProps, Separator } from "@vkontakte/vkui";
 
 import {
   StyledPanelHeader,
   ArrowBackPage,
-  RatingMe,
-  RatingUsers,
   Help,
-} from "components";
+} from "components/UI";
 
-type TProps = {
-  id: string;
-};
+import {
+  Me,
+  Main,
+} from "components/Home/Rating";
 
-const Rating = ({ id }: TProps) => {
+const Rating: React.FC<PanelProps> = ({ id }) => {
   const [visible, setVisible] = useState<boolean>(false);
   useEffect(() => {
     let timer: any;
@@ -39,9 +38,9 @@ const Rating = ({ id }: TProps) => {
         text2="Чем больше денег — тем выше место."
         style={{ marginBottom: 0 }}
       />
-      <RatingMe />
+      <Me />
       <Separator />
-      <RatingUsers />
+      <Main />
     </Panel>
   );
 };

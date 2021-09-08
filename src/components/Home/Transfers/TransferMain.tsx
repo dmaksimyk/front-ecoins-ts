@@ -1,6 +1,6 @@
 import { TransferHome } from ".";
 
-const TransferMain = () => { 
+const TransferMain: React.FC = () => { 
   return (
     <>
       <TransferHome />

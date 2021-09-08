@@ -1,9 +1,9 @@
-import { TransferLog, TransferBalance, TransferInput } from "../components";
+import { TransferLog, TransferBalance, TransferInput } from "../__components";
 import { Spacing } from "@vkontakte/vkui";
 
-const TransferHome = () => {
+const TransferHome: React.FC = () => {
   return (
-    <div style={{ width: "100vw" }}>
+    <div className="TransferHome__panel">
       <TransferBalance />
       <Spacing separator="center" />
       <div><TransferInput /></div>

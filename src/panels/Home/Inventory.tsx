@@ -1,17 +1,13 @@
 import {
-  Panel,
+  Panel, PanelProps,
 } from '@vkontakte/vkui'
 
 import {
   StyledPanelHeader,
   ArrowBackPage
-} from 'components'
+} from 'components/UI'
 
-type TProps = {
-  id: string;
-}
-
-const Inventory = ({ id }: TProps) => {
+const Inventory: React.FC<PanelProps> = ({id}) => {
   return (
     <Panel id={id} >
       <StyledPanelHeader

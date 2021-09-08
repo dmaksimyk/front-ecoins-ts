@@ -1,17 +1,13 @@
-import { Panel } from "@vkontakte/vkui";
+import { Panel, PanelProps } from "@vkontakte/vkui";
 import bridge from "@vkontakte/vk-bridge";
-
-import { StyledPanelHeader, ArrowBackPage, TransferMain } from "components";
+import { StyledPanelHeader, ArrowBackPage } from "components/UI";
+import { TransferMain } from "components/Home/Transfers";
 import { USER_TOKEN } from "engine/state";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { useNavigation } from "engine";
 
-type TProps = {
-  id: string;
-};
-
-const Transfer = ({ id }: TProps) => {
+const Transfer: React.FC<PanelProps> = ({ id }) => {
   const navigation = useNavigation();
   const setToken = useSetRecoilState(USER_TOKEN);
 

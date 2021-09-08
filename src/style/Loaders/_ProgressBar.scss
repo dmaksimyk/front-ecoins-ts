@@ -1,0 +1,24 @@
+.ProgressBar {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 5px;
+  border-radius: 50px;
+
+  & .ProgressBar__progress {
+    width: calc(100vw / 2);
+    max-width: calc(100vw / 2);
+  }
+}
+
+@keyframes animIconLoader {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}

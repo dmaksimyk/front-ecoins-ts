@@ -6,16 +6,14 @@
 // import {
 // } from 'engine/state';
 
-type TProps = {
+const Home: React.FC<{
   style: object;
-}
-
-const Home = ({style}: TProps) => {
+}> = ({ style }) => {
   return (
     <div style={style}>
       <p>Дома и квартиры</p>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Home
+export default Home;

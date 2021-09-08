@@ -1,23 +1,15 @@
-import { 
-  ReactNode 
-} from "react";
+import { ReactNode } from "react";
 
-import {
-  Placeholder,
-  Spinner,
-  Text
-} from "@vkontakte/vkui"
+import { Placeholder, Spinner, Text } from "@vkontakte/vkui";
 
-type TProps = {
+const Loader: React.FC<{
   icon: ReactNode | undefined;
-}
-
-const Loader = ({ icon }: TProps) => {
+}> = ({ icon }) => {
   return (
-    <Placeholder icon={icon || <Spinner/>}>
+    <Placeholder icon={icon || <Spinner />}>
       <Text weight="regular">Загрузка, ожидайте...</Text>
     </Placeholder>
-  )
-}
+  );
+};
 
 export default Loader;

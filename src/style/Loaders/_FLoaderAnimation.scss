@@ -1,4 +1,4 @@
-.FLoaderAnimation-load__container {
+.FLoaderAnimation__container {
   opacity: 0.9;
   position: absolute;
   width: 100vw;
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
 
-  & .FLoaderAnimation-icon__container {
+  & .FLoaderAnimation__icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,30 +21,5 @@
     & * {
       color: var(--destructive);
     }
-  }
-
-  & .FirstLoader--progressParent {
-    margin-top: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    padding: 5px;
-    border-radius: 50px;
-
-    & .FirstLoader--progress {
-      width: calc(100vw / 2);
-      max-width: calc(100vw / 2);
-    }
-  }
-}
-
-@keyframes animIconLoader {
-  from {
-    transform: rotateZ(0deg);
-  }
-
-  to {
-    transform: rotateZ(360deg);
   }
 }

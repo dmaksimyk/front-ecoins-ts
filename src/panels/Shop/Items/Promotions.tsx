@@ -6,16 +6,14 @@
 // import {
 // } from 'engine/state';
 
-type TProps = {
+const Promotions: React.FC<{
   style: object;
-}
-
-const Promotions = ({style}: TProps) => {
+}> = ({ style }) => {
   return (
     <div style={style}>
       <p>Акции</p>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Promotions
+export default Promotions;

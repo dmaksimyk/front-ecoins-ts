@@ -1,11 +1,11 @@
 import { Home, Rating, Inventory, Transfer, Settings } from "panels";
 
 import { View } from "@vkontakte/vkui";
-import { Modals } from "components";
+import Modals from "components/Modals";
 import { useRecoilValue } from "recoil";
 import { ACTIVE_PANEL, ACTIVE_POPOUT } from "engine/state";
 
-const VHome = ({ id }: { id: string }) => {
+const VHome: React.FC<{id: string}> = ({ id }) => {
   const activePanel = useRecoilValue(ACTIVE_PANEL);
   const popout = useRecoilValue(ACTIVE_POPOUT);
 

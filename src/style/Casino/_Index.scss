@@ -1,0 +1,23 @@
+@import "./__components/Roll", "./__components/LogItem";
+
+.Casino {
+    .Casino__inner {
+        flex-direction: column;
+
+        .Casino__input {
+            width: 300px;
+        }
+
+        .Casino__button {
+            margin-top: 12px; 
+            height: 40px; 
+            width: 100%;
+        }
+    }
+}
+
+.No_game {
+    transition: width .31s, opacity .31s;
+    width: 0;
+    opacity: 0;
+  }

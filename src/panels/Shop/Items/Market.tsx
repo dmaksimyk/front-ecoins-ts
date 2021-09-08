@@ -6,16 +6,14 @@
 // import {
 // } from 'engine/state';
 
-type TProps = {
+const Market: React.FC<{
   style: object;
-}
-
-const Market = ({style}: TProps) => {
+}> = ({ style }) => {
   return (
     <div style={style}>
       <p>Рынок</p>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Market
+export default Market;

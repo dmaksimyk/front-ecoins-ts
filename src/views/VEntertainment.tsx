@@ -1,11 +1,11 @@
 import { Casino } from "panels";
 
 import { View } from "@vkontakte/vkui";
-import { Modals } from "components";
+import Modals from "components/Modals";
 import { useRecoilValue } from "recoil";
 import { ACTIVE_PANEL, ACTIVE_POPOUT } from "engine/state";
 
-const VEntertainment = ({ id }: { id: string }) => {
+const VEntertainment: React.FC<{id: string}> = ({ id }) => {
   const activePanel = useRecoilValue(ACTIVE_PANEL);
   const popout = useRecoilValue(ACTIVE_POPOUT);
 

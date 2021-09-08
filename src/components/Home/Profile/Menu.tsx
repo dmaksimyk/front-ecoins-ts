@@ -11,12 +11,12 @@ import {
 import {
   MenuCards,
   MenuButton
-} from './components';
+} from './__components';
 
-const Menu = () => {
+const Menu: React.FC = () => {
 
   return (
-    <Div style={{ paddingBottom: 6 }} className="Card__menu" >
+    <Div className="Menu" >
       <MenuButton />
       <MenuCards
         img={<Icon24FavoriteOutline />}

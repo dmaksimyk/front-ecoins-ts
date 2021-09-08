@@ -1,26 +1,14 @@
-import {
-  Panel,
-} from '@vkontakte/vkui'
+import { Panel, PanelProps } from "@vkontakte/vkui";
+import { StyledPanelHeader } from 'components/UI';
+import Earning from "components/Earnings";
 
-import { 
-  StyledPanelHeader,
-  EarningsHomePage 
-} from 'components'
-
-type TProps = {
-  id: string;
-}
-
-const Job = ({id}: TProps) => {
+const Job: React.FC<PanelProps> = ({ id }) => {
   return (
     <Panel id={id}>
-      <StyledPanelHeader 
-        caption="Заработок" 
-        status="Здесь пахнет деньгами"
-      />
-      <EarningsHomePage />
+      <StyledPanelHeader caption="Заработок" status="Здесь пахнет деньгами" />
+      <Earning />
     </Panel>
-  )
-}
+  );
+};
 
-export default Job
+export default Job;

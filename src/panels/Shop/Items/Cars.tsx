@@ -6,16 +6,14 @@
 // import {
 // } from 'engine/state';
 
-type TProps = {
+const Cars: React.FC<{
   style: object;
-}
-
-const Cars = ({style}: TProps) => {
+}> = ({ style }) => {
   return (
     <div style={style}>
       <p>Машины</p>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Cars
+export default Cars;

@@ -4,10 +4,10 @@ import { ACTIVE_POPOUT, BALANCE, FIRST_LAST_NAME } from "engine/state";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { FLoaderAdvice, FLoaderAnimation, FLoaderHeader } from "./components";
+import { FLoaderAdvice, FLoaderAnimation, FLoaderHeader } from "./__components";
 import { useNavigation } from "engine";
 
-const FirstLoader = () => {
+const FirstLoader: React.FC = () => {
   const [progress, setProgress] = useState<number>(0);
   const [close, setClose] = useState<string>("");
 
@@ -40,7 +40,7 @@ const FirstLoader = () => {
 
   return (
     <div className={`FirstLoader ${close}`}>
-      <div className="FirstLoader--bg">
+      <div className="FirstLoader__background">
         <div
           style={{
             height: "var(--panelheader_height_android)",
