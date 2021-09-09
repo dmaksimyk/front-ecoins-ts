@@ -1,12 +1,29 @@
-import React, { useEffect } from 'react';
-import { useClient, useNavigation } from 'engine';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import './style/style.scss';
-import { ACTIVE_VIEW, PLATFORM } from 'engine/state';
-import { Epic } from '@vkontakte/vkui';
-import { StyledTabbar } from 'components/UI';
+import React, {
+  useEffect,
+} from 'react';
 import {
-  VEarnings, VEntertainment, VHome, VShop,
+  useClient,
+  useNavigation,
+} from 'engine';
+import {
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil';
+import {
+  ACTIVE_VIEW,
+  PLATFORM,
+} from 'engine/state';
+import {
+  Epic,
+} from '@vkontakte/vkui';
+import {
+  StyledTabbar,
+} from 'components/UI';
+import {
+  VEarnings,
+  VEntertainment,
+  VHome,
+  VShop,
 } from 'views';
 
 const App: React.FC = () => {
