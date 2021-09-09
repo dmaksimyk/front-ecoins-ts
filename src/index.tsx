@@ -21,7 +21,6 @@ import {
   AppRoot,
   ConfigProvider,
 } from '@vkontakte/vkui';
-import './style/style.scss';
 
 bridge.send('VKWebAppGetClientVersion')
   .then((data: any) => {
