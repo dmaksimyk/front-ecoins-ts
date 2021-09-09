@@ -10,7 +10,12 @@ const VShop: React.FC<{id: string}> = ({ id }) => {
   const popout = useRecoilValue(ACTIVE_POPOUT);
 
   return (
-    <View id={id} activePanel={activePanel} popout={popout} modal={<Modals />}>
+    <View
+      id={id}
+      activePanel={activePanel}
+      popout={popout}
+      modal={<Modals />}
+    >
       <Shop id="Main" />
     </View>
   );

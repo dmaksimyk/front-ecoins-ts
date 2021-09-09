@@ -16,7 +16,12 @@ const VHome: React.FC<{id: string}> = ({ id }) => {
   const popout = useRecoilValue(ACTIVE_POPOUT);
 
   return (
-    <View id={id} activePanel={activePanel} popout={popout} modal={<Modals />}>
+    <View
+      id={id}
+      activePanel={activePanel}
+      popout={popout}
+      modal={<Modals />}
+    >
       <Home id="Main" />
       <Rating id="Rating" />
       <Transfer id="Transfer" />
