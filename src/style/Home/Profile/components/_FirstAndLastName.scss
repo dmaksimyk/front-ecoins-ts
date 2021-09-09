@@ -1,0 +1,12 @@
+.name__container {
+  & .name__text {
+      margin: 0;
+      margin-left: 12px; 
+      text-align: left;
+  }
+  
+  & .name__text_id {
+    color: var(--text_secondary);
+    margin-top: 4px !important;
+  }
+}

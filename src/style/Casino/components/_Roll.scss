@@ -1,0 +1,84 @@
+.Roll {
+    width: 100vw;
+  
+    // & .Roll-btns {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    // }
+  
+    & .Roll__speen {
+      overflow: hidden;
+      position: relative;
+      margin: 12px auto;
+      display: flex;
+      justify-content: center;
+      width: 300px;
+      height: 95px;
+      border-radius: 15px;
+      background: #E6EAF6;
+      
+      & .Roll_shadow {
+        z-index: 120;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc(100% - 4px);
+        width: calc(100% - 4px);
+        border-radius: 15px;
+        border: 2px solid #E6EAF6;
+      }
+  
+      & .Roll__arrow {
+        z-index: 121;
+        position: absolute;
+        top: 0;
+        width: 2px;
+        background: #d8e3e7;
+        box-shadow: 0 0 7px rgba(0, 0, 0, .7);
+        height: inherit;
+      }
+      
+      & .Roll__speen_left {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 15px;
+        left: 0;
+        display: flex;
+        align-items: center;
+        min-width: 2000px;
+        height: inherit;
+  
+        & div {
+          box-sizing: border-box;
+          filter: drop-shadow(0px 0px 5px rgba(5, 30, 253, 0.5));
+          transition: .2s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 12px;
+          width: 70px;
+          height: 70px;
+          margin-left: 12px;
+          color: white;
+          font: {
+            size: 18px;
+            weight: bold;
+          }
+  
+          &:nth-child(1){
+            margin-left: 12px;
+          }
+        }
+      }
+    }  
+  }
+  
+  body[scheme="space_gray"] .Roll-speen {
+    background: rgb(95, 98, 114);
+  
+    & .Roll-arrow {
+      background: #d8e3e7;
+      border: 1px solid black;
+    }
+  }
