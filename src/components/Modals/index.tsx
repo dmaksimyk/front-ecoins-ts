@@ -1,10 +1,11 @@
-import { ModalRoot } from "@vkontakte/vkui";
-import { useNavigation } from "engine";
-import { ACTIVE_MODAL } from "engine/state";
-import { useRecoilValue } from "recoil";
-import { InformationUser } from "./__components";
+import React from 'react';
+import { ModalRoot } from '@vkontakte/vkui';
+import { useNavigation } from 'engine';
+import { ACTIVE_MODAL } from 'engine/state';
+import { useRecoilValue } from 'recoil';
+import { InformationUser } from './components';
 
-import { ModalPage, ModalPageNextTransfer } from "./modalPages";
+import { ModalPage, ModalPageNextTransfer } from './modalPages';
 
 const Modals: React.FC = () => {
   const activeModal = useRecoilValue(ACTIVE_MODAL);

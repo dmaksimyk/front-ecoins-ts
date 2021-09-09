@@ -25,7 +25,6 @@ import {
   VHome,
   VShop,
 } from 'views';
-import './style/style.scss';
 
 const App: React.FC = () => {
   const platform = document.body.getAttribute('platform');

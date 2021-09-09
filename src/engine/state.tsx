@@ -5,13 +5,13 @@ export * from './Atoms/AnyConstants';
 export * from './Atoms/Client';
 
 // Интерфейс
-export * from './Atoms/Interface'
+export * from './Atoms/Interface';
 
 // Подсказки
-export * from './Atoms/Hints'
+export * from './Atoms/Hints';
 
 // Главная страница
-export * from './Atoms/Home'
+export * from './Atoms/Home';
 
 // Магазин
-export * from './Atoms/Shop'
+export * from './Atoms/Shop';

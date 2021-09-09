@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 // import { useRecoilValue } from 'recoil';
 
 // import {
@@ -5,15 +6,14 @@
 
 // import {
 // } from 'engine/state';
+import React from 'react';
 
 const Market: React.FC<{
   style: object;
-}> = ({ style }) => {
-  return (
-    <div style={style}>
-      <p>Рынок</p>
-    </div>
-  );
-};
+}> = ({ style }) => (
+  <div style={style}>
+    <p>Рынок</p>
+  </div>
+);
 
 export default Market;

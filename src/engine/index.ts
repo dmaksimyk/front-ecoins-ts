@@ -1,2 +1,2 @@
 // hooks
-export * from './hooks/index'
+export * from './hooks/index';

@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { Panel, PanelProps, Separator } from "@vkontakte/vkui";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useState } from 'react';
+import { Panel, PanelProps, Separator } from '@vkontakte/vkui';
 import {
   StyledPanelHeader,
   ArrowBackPage,
   Help,
-} from "components/UI";
-
+} from 'components/UI';
 import {
   Me,
   Main,
-} from "components/Home/Rating";
+} from 'components/Home/Rating';
 
 const Rating: React.FC<PanelProps> = ({ id }) => {
   const [visible, setVisible] = useState<boolean>(false);

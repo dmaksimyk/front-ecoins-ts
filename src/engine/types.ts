@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode } from 'react';
 
 export type TAppHistory = {
   [activeView: string]: TAppSector[];
@@ -24,7 +24,14 @@ export type TAppHistoryOptions = {
 }
 
 export type TSubnavigationBarSelect = {
-  selected: "businesses" | "promotions" | "home" | "cars" | "clothes" | "smartphones" | "market";
+  selected:
+  | 'businesses'
+  | 'promotions'
+  | 'home'
+  | 'cars'
+  | 'clothes'
+  | 'smartphones'
+  | 'market';
   index: 0 | 1 | 2 | 3 | 4 | 5 | 6 | number;
 }
 
@@ -60,6 +67,6 @@ export type TRating = {
   balance: string;
 }
 
-export type THelpBridge = "settingRatingHelp" | "settingTransferHelp"
+export type THelpBridge = 'settingRatingHelp' | 'settingTransferHelp'
 
 export type TJob = TBusiness;

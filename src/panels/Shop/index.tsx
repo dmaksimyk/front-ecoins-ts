@@ -1,8 +1,9 @@
-import { useRecoilValue } from "recoil";
-import { Panel, PanelProps, Separator } from "@vkontakte/vkui";
-import { StyledPanelHeader, CardMyBalance } from "components/UI";
-import { Filter, Slider } from "components/Shop";
-import { SHOP } from "engine/state";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { Panel, PanelProps, Separator } from '@vkontakte/vkui';
+import { StyledPanelHeader, CardMyBalance } from 'components/UI';
+import { Filter, Slider } from 'components/Shop';
+import { SHOP } from 'engine/state';
 
 const Shop: React.FC<PanelProps> = ({ id }) => {
   const shop = useRecoilValue(SHOP);

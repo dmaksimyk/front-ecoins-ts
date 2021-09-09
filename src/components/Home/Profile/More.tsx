@@ -1,10 +1,10 @@
-import { useRecoilValue } from "recoil";
-import { Title } from "@vkontakte/vkui";
-import { DONUT, SUBSCRIBE_GROUP } from "engine/state";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { Title } from '@vkontakte/vkui';
+import { DONUT, SUBSCRIBE_GROUP } from 'engine/state';
 
-import DonutPlaceHolder from "./DonutPlaceHolder";
-import SubscribePlaceHolder from "./SubscribePlaceHolder";
-
+import DonutPlaceHolder from './DonutPlaceHolder';
+import SubscribePlaceHolder from './SubscribePlaceHolder';
 
 const UserMore: React.FC = () => {
   const subscribe_group = useRecoilValue(SUBSCRIBE_GROUP);
@@ -17,7 +17,7 @@ const UserMore: React.FC = () => {
           weight="semibold"
           level="3"
           style={{
-            padding: "0 16px",
+            padding: '0 16px',
             paddingBottom: 10,
           }}
         >
@@ -29,9 +29,8 @@ const UserMore: React.FC = () => {
         {!donut ? <DonutPlaceHolder /> : null}
       </div>
     );
-  } else {
-    return <></>;
   }
+  return <></>;
 };
 
 export default UserMore;

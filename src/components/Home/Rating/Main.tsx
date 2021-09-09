@@ -1,9 +1,11 @@
-import { Div, Card } from "@vkontakte/vkui";
-import { RATING } from "engine/state";
-import { TRating } from "engine/types";
-import { useRecoilValue } from "recoil";
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
+import { Div, Card } from '@vkontakte/vkui';
+import { RATING } from 'engine/state';
+import { TRating } from 'engine/types';
+import { useRecoilValue } from 'recoil';
 
-import { User } from "./__components";
+import { User } from './components';
 
 const Rating: React.FC = () => {
   const users = useRecoilValue(RATING);

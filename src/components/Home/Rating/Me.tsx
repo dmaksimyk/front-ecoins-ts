@@ -1,10 +1,10 @@
-import { useRecoilValue } from "recoil";
-
-import { Div, Card } from "@vkontakte/vkui";
-
-import { User } from "./__components";
-
-import { BALANCE, FIRST_LAST_NAME, ID, IMG, MY_RATING } from "engine/state";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { Div, Card } from '@vkontakte/vkui';
+import {
+  BALANCE, FIRST_LAST_NAME, ID, IMG, MY_RATING,
+} from 'engine/state';
+import { User } from './components';
 
 const Me: React.FC = () => {
   const id = useRecoilValue(ID);
@@ -17,12 +17,12 @@ const Me: React.FC = () => {
     <Div>
       <Card className="Rating__me" mode="shadow">
         <User
-          disabled={true}
+          disabled
           id={id}
           img={img}
-          balance={balance || "1 тыс."}
+          balance={balance || '1 тыс.'}
           position={rating}
-          name={name || "NO NAME"}
+          name={name || 'NO NAME'}
           chevron={false}
         />
       </Card>

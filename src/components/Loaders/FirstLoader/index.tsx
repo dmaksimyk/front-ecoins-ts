@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
-
-import { ACTIVE_POPOUT, BALANCE, FIRST_LAST_NAME } from "engine/state";
-
-import { useRecoilValue, useSetRecoilState } from "recoil";
-
-import { FLoaderAdvice, FLoaderAnimation, FLoaderHeader } from "./__components";
-import { useNavigation } from "engine";
+import React, { useState, useEffect } from 'react';
+import { ACTIVE_POPOUT, BALANCE, FIRST_LAST_NAME } from 'engine/state';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useNavigation } from 'engine';
+import { FLoaderAdvice, FLoaderAnimation, FLoaderHeader } from './components';
 
 const FirstLoader: React.FC = () => {
   const [progress, setProgress] = useState<number>(0);
-  const [close, setClose] = useState<string>("");
+  const [close, setClose] = useState<string>('');
 
   const nav = useNavigation();
   const setPopout = useSetRecoilState(ACTIVE_POPOUT);
@@ -18,7 +15,7 @@ const FirstLoader: React.FC = () => {
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => setClose("FirstLoader--close"), 2700);
+      setTimeout(() => setClose('FirstLoader--close'), 2700);
       setTimeout(() => nav.backPage(true, true), 3000);
     }
     // eslint-disable-next-line
@@ -34,19 +31,17 @@ const FirstLoader: React.FC = () => {
     // eslint-disable-next-line
   }, [firstAndLastName, setProgress]);
 
-  useEffect(() => {
-    return () => setProgress(0);
-  }, [setProgress]);
+  useEffect(() => () => setProgress(0), [setProgress]);
 
   return (
     <div className={`FirstLoader ${close}`}>
       <div className="FirstLoader__background">
         <div
           style={{
-            height: "var(--panelheader_height_android)",
-            paddingTop: "var(--safe-area-inset-top)",
+            height: 'var(--panelheader_height_android)',
+            paddingTop: 'var(--safe-area-inset-top)',
           }}
-        ></div>
+        />
         <FLoaderHeader />
         <FLoaderAnimation progress={progress} />
         <FLoaderAdvice />
@@ -55,5 +50,5 @@ const FirstLoader: React.FC = () => {
   );
 };
 
-(FirstLoader as any).type = "FirstLoader";
+(FirstLoader as any).type = 'FirstLoader';
 export default FirstLoader;
