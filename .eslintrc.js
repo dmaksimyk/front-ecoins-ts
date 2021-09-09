@@ -46,6 +46,7 @@ module.exports = {
     ],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    'linebreak-style': [2, 'windows'],
   },
   settings: {
     'import/resolver': {
