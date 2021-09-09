@@ -47,7 +47,10 @@ const App: React.FC = () => {
   }, [platform, setPlatform]);
 
   return (
-    <Epic activeStory={activeView} tabbar={<StyledTabbar />}>
+    <Epic
+      activeStory={activeView}
+      tabbar={<StyledTabbar />}
+    >
       <VHome id="Home" />
       <VEarnings id="Earnings" />
       <VEntertainment id="Entertainment" />
