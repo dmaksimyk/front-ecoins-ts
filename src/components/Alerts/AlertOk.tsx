@@ -1,5 +1,6 @@
-import { Alert } from "@vkontakte/vkui";
-import { useNavigation } from "engine";
+import React from 'react';
+import { Alert } from '@vkontakte/vkui';
+import { useNavigation } from 'engine';
 
 const AlertOk: React.FC<{ caption: string }> = ({ caption }) => {
   const nav = useNavigation();
@@ -7,9 +8,9 @@ const AlertOk: React.FC<{ caption: string }> = ({ caption }) => {
     <Alert
       actions={[
         {
-          title: "Ок",
+          title: 'Ок',
           autoclose: true,
-          mode: "default",
+          mode: 'default',
         },
       ]}
       onClose={() => nav.backPage()}

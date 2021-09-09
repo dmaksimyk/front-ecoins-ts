@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { ACTIVE_POPOUT, BALANCE, FIRST_LAST_NAME } from 'engine/state';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

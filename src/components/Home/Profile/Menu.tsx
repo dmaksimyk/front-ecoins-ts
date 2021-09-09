@@ -1,19 +1,11 @@
 import React from 'react';
-
 import {
   Icon24MoneySendOutline,
   Icon24CubeBoxOutline,
   Icon24FavoriteOutline,
 } from '@vkontakte/icons';
-
-import {
-  Div,
-} from '@vkontakte/vkui';
-
-import {
-  MenuCards,
-  MenuButton,
-} from './components';
+import { Div } from '@vkontakte/vkui';
+import { MenuCards, MenuButton } from './components';
 
 const Menu: React.FC = () => (
   <Div className="Menu">

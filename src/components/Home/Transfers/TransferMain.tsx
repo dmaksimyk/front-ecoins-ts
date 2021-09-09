@@ -1,11 +1,10 @@
-import { TransferHome } from ".";
+import React from 'react';
+import { TransferHome } from '.';
 
-const TransferMain: React.FC = () => { 
-  return (
-    <>
-      <TransferHome />
-    </>
-  );
-};
+const TransferMain: React.FC = () => (
+  <>
+    <TransferHome />
+  </>
+);
 
 export default TransferMain;

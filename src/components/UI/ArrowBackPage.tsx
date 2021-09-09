@@ -1,5 +1,6 @@
-import { PanelHeaderBack } from "@vkontakte/vkui";
-import { useNavigation } from "engine";
+import React from 'react';
+import { PanelHeaderBack } from '@vkontakte/vkui';
+import { useNavigation } from 'engine';
 
 const ArrowBackPage: React.FC = () => {
   const history = useNavigation();

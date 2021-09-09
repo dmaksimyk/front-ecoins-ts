@@ -1,8 +1,15 @@
-import { useRecoilValue } from "recoil";
-import bridge from "@vkontakte/vk-bridge";
-import { Icon16UserAdd, Icon16ChevronOutline } from "@vkontakte/icons";
-import { Card, Div, SimpleCell, Avatar } from "@vkontakte/vkui";
-import { CLIENT, SUBSCRIBE_GROUP, SYMBOLS_RUB } from "engine/state";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
+/* eslint-disable camelcase */
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import bridge from '@vkontakte/vk-bridge';
+import { Icon16UserAdd, Icon16ChevronOutline } from '@vkontakte/icons';
+import {
+  Card, Div, SimpleCell, Avatar,
+} from '@vkontakte/vkui';
+import { CLIENT, SUBSCRIBE_GROUP, SYMBOLS_RUB } from 'engine/state';
 
 const SubscribePlaceHolder: React.FC = () => {
   const client = useRecoilValue(CLIENT);
@@ -18,32 +25,30 @@ const SubscribePlaceHolder: React.FC = () => {
           onClick={() => {
             if (!subscribe_group && subscribe_group !== undefined) {
               bridge
-                .send("VKWebAppJoinGroup", {
+                .send('VKWebAppJoinGroup', {
                   group_id: 204463745,
                 })
                 .then((data: any) => {
                   if (data.result) {
-                    console.log("result:", data.result);
-                    client.emit("SUBSCRIBE_GROUP");
+                    console.log('result:', data.result);
+                    client.emit('SUBSCRIBE_GROUP');
                   }
                 })
-                .catch((err) =>
-                  console.log(
-                    "Подписка на группу:",
-                    "пользователь отменил подписку"
-                  )
-                );
-            } else console.log("err");
+                .catch((err) => console.log(
+                  'Подписка на группу:',
+                  'пользователь отменил подписку',
+                ));
+            } else console.log('err');
           }}
-          before={
+          before={(
             <Avatar
-              style={{ background: "var(--dynamic_green)" }}
+              style={{ background: 'var(--dynamic_green)' }}
               size={28}
               shadow={false}
             >
               <Icon16UserAdd fill="var(--white)" />
             </Avatar>
-          }
+          )}
           after={<Icon16ChevronOutline />}
           description={`И получи 15 тыс. ${SYMBOLS_RUB} =)`}
         >

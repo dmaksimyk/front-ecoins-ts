@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
-import { useRecoilValue } from "recoil";
-import { useNavigation } from "engine";
-import { ACTIVE_VIEW } from "engine/state";
-import { TabbarItem } from "@vkontakte/vkui";
+import React, { ReactNode } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useNavigation } from 'engine';
+import { ACTIVE_VIEW } from 'engine/state';
+import { TabbarItem } from '@vkontakte/vkui';
 
 const StyledTabbarItem: React.FC<{
   text: string;
