@@ -14,7 +14,7 @@ const Roll: React.FC<{
         <div className="Roll_shadow" />
         <div className="Roll__arrow" />
         <div
-          className="Roll_speen_left"
+          className="Roll__speen_left"
           style={{
             transition: `ease-in-out ${transition}s`,
             transform: translate,
